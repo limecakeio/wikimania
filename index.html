@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8">
+   <title>wikimania - A crazy race trough Wikipedia</title>
+  </head>
+  <body ng-app="wikimania">
+	<div ng-controller='wikimania-controller'>
+      <span>innerHTML : {{articeHTML}}</span>
+      <div ng-click="getArticle('Kulturapfel')">Start Game</div>
+	</div>
+	<div id = 'contextNode'></div>
+	    <script src="node_modules\angular/angular.min.js"></script>
+	<script src="src\js\index.js"></script>
+  </body>
+</html>
