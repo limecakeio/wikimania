@@ -6,10 +6,10 @@
   </head>
   <body ng-app="wikimania">
 	<div ng-controller='wikimania-controller'>
-      <div>innerHTML : {{activeArticle.articeHTML}}</div>
-      <div>title: {{activeArticle.title}}</div>
-      <div>id: {{activeArticle.id}}</div>
-      <div ng-click="startGame(287816, 2166425)">Start Game</div>
+  <div ng-click="startGame(287816, 2166425)" id='startGame'>Start Game</div>
+  <div ng-click="getPreview('preview')" id='preview'>Preview</div>
+  <div ng-click="getRandomArticle()" id='random'>Zufall</div>
+  <div id='goal'>{{goalReached}}</div>
 	</div>
 	<div id = 'contextNode'></div>
 	    <script src="node_modules\angular/angular.min.js"></script>
