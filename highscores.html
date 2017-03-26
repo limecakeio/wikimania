@@ -6,10 +6,10 @@
   </head>
   <body ng-app="wikimania">
 	<div ng-controller='wikimania-hs-controller'>
-      <div id="finish-selection-easy"></div>
+      <div data-ng-init="getAllHighscores()" id="finish-selection-easy"></div>
 	</div>
-	<div id = 'contextNode'></div>
 	    <script src="node_modules\angular/angular.min.js"></script>
-	<script src="src\js\highscores.js"></script>
+      <!-- <script src="src\js\index.js"></script> -->
+      <script src="src\js\highscores.js"></script>
   </body>
 </html>
