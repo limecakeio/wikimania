@@ -2,14 +2,20 @@
   "name": "wikimania",
   "version": "0.0.1",
   "description": "A crazy race through Wikipedia",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/limecakeio/wikimania.git"
   },
+  "window": {
+        "toolbar": false,
+        "width": 1024,
+        "height": 768,
+        "position": "mouse",
+        "resizable": false
+    },
   "keywords": [
     "wikipedia",
     "race",
