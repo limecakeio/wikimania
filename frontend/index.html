@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>Wikimania</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Alegreya" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="layout.css">
+</head>
+
+<body>
+    <main>
+        <article class="align-center" id="wikimania-main">
+            <section id="title-screen">
+                <div class="container">
+                    <div class="g12"><img src="logo.png" width="320px" height="auto" alt="Logo"></div>
+                    <div class="g12">
+                        <h1>Wikimania</h1>
+                        <h4>by</h4>
+                        <h4>Pixelpedia</h4></div>
+                    <div class="g12" id="title-screen-button">
+                        <div class="button button-green" onclick="openSection('difficulty-selection')">Spiel starten</div>
+                        <div class="button button-lightblue" onclick="openSection('highscore')">Highscore</div>
+                        <div class="button button-darkblue" id="game-rules">Spielregeln</div>
+                        <div class="button button-red" onclick="openSection('title-screen')">Exit</div>
+                    </div>
+                </div>
+            </section>
+            <section id="naming-screen"><a onclick="openSection('title-screen')">Zurück</a>
+                <div class="form-group">
+                    <label for="name-field">Spielernamen eingeben</label>
+                    <input id="name-field" name="playerName" type="text" required="required" placeholder="Spielernamen hier eingeben" value="TestSpieler">
+                </div>
+                <div class="button button-green" id="confirm-name" onclick="openSection('difficulty-selection')">Bestätigen</div>
+            </section>
+            <section id="game-rules-popup">
+                <div class="popup-controls">
+                    <div id="popup-close"> <i class="material-icons">&#xE5CD;</i></div>
+                    <div class="slide-left"><i class="material-icons" onclick="ruleSlide(-1)">&#xE5CB;</i></div>
+                    <div class="slide-right"><i class="material-icons" onclick="ruleSlide(1)">&#xE5CC;</i></div>
+                </div>
+                <div class="popup-content"><img class="game-rules" src="Spielregeln.png" width="1200" height="auto"><img class="game-rules" src="Spielfeatures.png" width="1200" height="auto"></div>
+            </section>
+            <section id="difficulty-selection">
+                <div class="container">
+                    <div class="g12 align-left return-button"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <h2>Schwierigkeitsgrad</h2>
+                    <div class="g12" id="difficulty-selection-mode">
+                        <div class="g6">
+                            <div class="button button-green" onclick="openSection('preparation-screen-easy-mode')">Einsteiger</div>
+                        </div>
+                        <div class="g6">
+                            <div class="button button-red" onclick="openSection('preparation-screen-hard-mode')">Experte</div>
+                        </div>
+                        <div class="g12">
+                            <div class="triangle"></div>
+                            <div class="g6 box align-left" id="beginner-mode-info">
+                                <h5>Besonderheiten beim Einsteiger-Modus</h5>
+                                <ul>
+                                    <li>Start und Ziel dürfen von ihnen aus einer Liste ausgewählt werden</li>
+                                    <li>Bei Mouseover über einen Link wird eine Vorschau angezeigt</li>
+                                    <li>Empfehlenswert für Anfänger</li>
+                                </ul>
+                            </div>
+                            <div class="g6 box align-left" id="expert-mode-info">
+                                <h5>Besonderheiten beim Experten-Modus</h5>
+                                <ul>
+                                    <li>Start und Ziel werden per Zufall ausgewählt</li>
+                                    <li>Keine Vorschau bei Mouseover</li>
+                                    <li>Empfehlenswert für geübte Spieler</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g12">
+                        <h4>OR</h4>
+                        <div class="button button-darkblue" onclick="openSection('highscore')">Challenge a Highscore</div>
+                    </div>
+                </div>
+            </section>
+            <section id="preparation-screen-easy-mode">
+                <div class="container">
+                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12">
+                        <h3>Easy Mode</h3>
+                        <div class="g1"></div>
+                        <div class="g4" id="start-selection-easy">
+                            <button class="accordion">Start</button>
+                            <div class="panel" id="easy-starts">
+                                <p>Start 1</p>
+                                <p>Start 2</p>
+                                <p>Start 3</p>
+                                <p>Start 4</p>
+                                <p>Start 5</p>
+                            </div>
+                        </div>
+                        <div class="g2 continue-arrow"><i class="material-icons">&#xE8E4;</i></div>
+                        <div class="g4" id="finish-selection-easy">
+                            <button class="accordion">Ziel</button>
+                            <div class="panel" id="easy-ends">
+                                <p>Ziel 1</p>
+                                <p>Ziel 2</p>
+                                <p>Ziel 3</p>
+                                <p>Ziel 4</p>
+                                <p>Ziel 5</p>
+                            </div>
+                        </div>
+                        <div class="g1"></div>
+                    </div>
+                    <div class="g12 start-game-button">
+                        <div class="button button-green" onclick="openSection('wikipedia-content')">Spiel starten</div>
+                    </div>
+                </div>
+            </section>
+            <section id="preparation-screen-hard-mode">
+                <div class="container">
+                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12">
+                        <h3>Hard Mode</h3>
+                        <div class="g1"></div>
+                        <div class="g4" id="start-selection-hard">
+                            <h3>Start</h3>
+                            <div class="box" id="hard-start"><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>Wähle einen anderen Startpunkt</a>
+                                <h4>Start</h4></div>
+                        </div>
+                        <div class="g2 continue-arrow"><i class="material-icons">&#xE8E4;</i></div>
+                        <div class="g4" id="finish-selection-hard">
+                            <h3>Ziel</h3>
+                            <div class="box" id="hard-end"><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>Wähle einen anderen Zielpunkt</a>
+                                <h4>Ziel</h4></div>
+                        </div>
+                        <div class="g1"></div>
+                    </div>
+                    <div class="g12 start-game-button">
+                        <div class="button button-green" onclick="openSection('wikipedia-content')">Spiel starten</div>
+                    </div>
+                </div>
+            </section>
+            <section id="highscore">
+                <div class="container">
+                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12">
+                        <h2>Highscores</h2>
+                        <div class="g12" id="highscore-table">
+                            <table class="align-center">
+                                <thead>
+                                    <tr>
+                                        <th>Start</th>
+                                        <th>Ziel</th>
+                                        <th>Highscore</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Wasser</td>
+                                        <td>Banane</td>
+                                        <td>50</td>
+                                        <td>Challenge!</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banane</td>
+                                        <td>Wasser</td>
+                                        <td>1</td>
+                                        <td>Challenge!</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="wikipedia-content">
+                <div class="container">
+                    <div class="g12">
+                        <div class="g4">
+                            <p>Ziel:</p>
+                        </div>
+                        <div class="g4">
+                            <p id="current-clicks">Clicks:</p>
+                        </div>
+                        <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
+                    </div>
+                    <div id="wikipedia-article">
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
+                    </div>
+                </div>
+            </section>
+            <section id="success-screen">
+                <h3>Sie haben es geschafft!</h3>
+                <h4>Von XYZ nach ABC in</h4>
+                <div class="container">
+                    <div class="g5 align-right">
+                        <p>X Clicks</p>
+                    </div>
+                    <div class="g2"></div>
+                    <div class="g5 align-left">
+                        <p>XX:XX Zeit</p>
+                    </div>
+                </div>
+                <div class="container" id="success-way">
+                    <h4>Diesen Weg sind sie gegangen</h4>
+                    <ul id="success-stations">
+                        <li>Pizza</li>
+                        <li>Essen</li>
+                        <li>Italien</li>
+                        <li>Pasta</li>
+                    </ul>
+                </div>
+            </section>
+        </article>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
