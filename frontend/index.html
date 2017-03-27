@@ -21,15 +21,16 @@
                         <h4>by</h4>
                         <h4>Pixelpedia</h4></div>
                     <div class="g12" id="title-screen-button">
-                        <div class="button button-green" onclick="openSection('difficulty-selection')">Spiel starten</div>
+                        <div class="button button-green" onclick="openSection('naming-screen')">Spiel starten</div>
                         <div class="button button-lightblue" onclick="openSection('highscore')">Highscore</div>
                         <div class="button button-darkblue" id="game-rules">Spielregeln</div>
                         <div class="button button-red" onclick="window.close()">Exit</div>
                     </div>
                 </div>
             </section>
-            <section id="naming-screen"><a onclick="openSection('title-screen')">Zurück</a>
-                <div class="form-group">
+            <section id="naming-screen">
+                <div class="g12 align-left return-button"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                <div class="form-group" id="naming-screen-form">
                     <label for="name-field">Spielernamen eingeben</label>
                     <input id="name-field" name="playerName" type="text" required="required" placeholder="Spielernamen hier eingeben" value="TestSpieler">
                 </div>

@@ -161,7 +161,7 @@ a {
     display: block;
 }
 
-/* GOOGLE MATERIAL ICONS */ 
+/* GOOGLE MATERIAL ICONS */
 .material-icons {
     display: inline-flex;
     align-items: center;
@@ -298,7 +298,6 @@ a {
     margin-top: 20px;
 }
 #difficulty-selection {
-    margin-top: 10%;
 }
 #difficulty-selection .button {
     width: 300px;
@@ -337,8 +336,14 @@ a {
 }
 
 #naming-screen {
+
+}
+
+#naming-screen-form {
     margin-top: 220px;
 }
+
+
 #confirm-name {
     margin-top: 20px;
 }
