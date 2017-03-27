@@ -193,10 +193,10 @@
             </section>
             <section id="success-screen">
                 <h3>Sie haben es geschafft!</h3>
-                <h4>Von XYZ nach ABC in</h4>
+                <h4 ng-controller="wikimania-game-gui-controller">Von {{model.startArticle.title}} nach {{model.endArticle.title}} in</h4>
                 <div class="container">
                     <div class="g5 align-right">
-                        <p>X Schritten</p>
+                        <p ng-controller="wikimania-game-gui-controller">{{model.articleCounter}} Schritten</p>
                     </div>
                     <div class="g2"></div>
                 </div>

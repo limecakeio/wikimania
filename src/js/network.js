@@ -215,5 +215,16 @@ wikimania.factory('wikipediaAPI', $http => {
     });
   };
 
+    wikipediaAPI.getRandomArticleTitle = callback => {
+      wikipediaAPI.getRandomArticle((article, error) => {
+        if (error !== null) {
+          callback(null, error);
+        } else {
+          callback(article.title, null);
+        }
+      }
+      );
+    };
+
   return wikipediaAPI;
 });
