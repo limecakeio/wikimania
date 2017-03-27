@@ -7,7 +7,6 @@ wikimania.factory('wikipediaAPI', $http => {
   wikipediaAPI.getArticle = (identifier, callback) => {
     if (typeof identifier === 'number') {
       getArticleFromID(identifier, true).then(response => {
-        console.log(response);
           try  {
             let article = parseArticle(response);
             callback(article, null);
@@ -160,8 +159,8 @@ wikimania.factory('wikipediaAPI', $http => {
         method: 'GET',
         url: 'https://de.wikipedia.org/w/api.php?origin=*&action=parse&prop=text&format=json&page=' + title
     }).then(function successCallback(response) {
-      if (response.data.warning !== 'undefined') {
-        callback(null, response.data.warning);
+      if (typeof response.data.warnings !== 'undefined') {
+        callback(null, response.data.warnings);
       } else {
         callback(response.data.parse.pageid, null);
       }
@@ -175,8 +174,8 @@ wikimania.factory('wikipediaAPI', $http => {
 	      method: 'GET',
         url: 'https://de.wikipedia.org/w/api.php?origin=*&action=query&format=json&pageids=' + id
     }).then(response => {
-      if (response.data.warning !== 'undefined') {
-        callback(null, response.data.warning);
+      if (typeof response.data.warnings !== 'undefined') {
+        callback(null, response.data.warnings);
       } else {
         callback(response.data.query.pages['' + id].title, null);
       }
@@ -208,6 +207,7 @@ wikimania.factory('wikipediaAPI', $http => {
         method: 'GET',
         url: 'https://de.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=pageterms|extracts&exintro=&explaintext=&pageids=' + id
     }).then(response => {
+      console.log(response.data);
       if (typeof response.data.warnings !== 'undefined') {
         callback(null, response.data.warnings);
       } else {
