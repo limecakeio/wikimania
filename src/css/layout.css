@@ -509,7 +509,31 @@ a {
     font-weight: bold;
 }
 
-#wikipedia-article h2,h3,h4,h5,h6 {
+#wikipedia-article h2 {
+    line-height: 19px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+#wikipedia-article h3{
+    line-height: 19px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+#wikipedia-article h4 {
+    line-height: 19px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+#wikipedia-article h5 {
+    line-height: 19px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+#wikipedia-article h6 {
     line-height: 19px;
     font-size: 19px;
     font-weight: bold;
