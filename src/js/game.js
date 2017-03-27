@@ -6,6 +6,24 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
     const gamesFilePath = "src/assets/games.json";
     const fs = require('fs');
 
+    //Initiate a new game
+    $scope.initiateSimpleGame = function() {
+      //Retrieve the clicked list elements
+      let startPoint = document.querySelector("#easy-starts .clicked");
+      let targetPoint = document.querySelector("#easy-ends .clicked");
+      let startID = startPoint.getAttribute("data-id");
+      let targetID = targetPoint.getAttribute("data-id");
+      console.log(startID);
+      console.log(targetID);
+
+      if(typeof startID !== 'undefined' && typeof targetID !== 'undefined') {
+        //Get controller to start a new game
+        game.startGame(parseInt(startID), parseInt(targetID));
+        //Load the new section
+        openSection("wikipedia-content");
+      }
+    }
+
     //Injects the game list into a specified container.
     //Excpects the id of the container as a string for instance "#container-id"
     $scope.generateGameList = function(container){
@@ -21,6 +39,7 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
 
           titleContainer.classList.add("article-container");
           titleContainer.setAttribute('data-id', id);
+          titleContainer.setAttribute('onclick', 'highlightElement(this)');
           titleContainer.innerHTML = title;
           let viewportContainer = document.querySelector(container);
           viewportContainer.append(titleContainer);

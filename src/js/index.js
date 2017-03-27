@@ -1,8 +1,5 @@
 const wikimania = angular.module('wikimania',[]);
 wikimania.factory('game', wikipediaAPI => {
-  console.log('index');
-  //const fs = require('fs');
-  //game.fs = fs;
   const game = {};
 
   game.activeArticle = {
@@ -37,7 +34,7 @@ wikimania.factory('game', wikipediaAPI => {
       } else {
         game.startArticle = article;
         game.activeArticle = article;
-        document.querySelector('#contextNode').innerHTML = article.html;
+        document.querySelector('#wikipedia-article').innerHTML = article.html;
       }
     });
     wikipediaAPI.getRandomArticle((article, error) => {
@@ -62,7 +59,8 @@ wikimania.factory('game', wikipediaAPI => {
       } else {
         game.startArticle = article;
         game.activeArticle = article;
-        document.querySelector('#contextNode').innerHTML = article.html;
+        document.querySelector('#wikipedia-article').innerHTML = article.html;
+        window.scrollTop;
       }
     });
     wikipediaAPI.getArticle(endID, (article, error) => {
@@ -101,7 +99,7 @@ wikimania.factory('game', wikipediaAPI => {
         game.activeArticle = article;
         game.articleCounter++;
         game.articleArchive.push(article);
-        document.querySelector('#contextNode').innerHTML = article.html;
+        document.querySelector('#wikipedia-article').innerHTML = article.html;
         checkArticle();
       }
     });
@@ -113,7 +111,7 @@ wikimania.factory('game', wikipediaAPI => {
         console.error(error);
       } else {
         game.activeArticle = article;
-        document.querySelector('#contextNode').innerHTML = article.html;
+        document.querySelector('#wikipedia-article').innerHTML = article.html;
       }
     });
   };
@@ -153,7 +151,7 @@ wikimania.factory('game', wikipediaAPI => {
     game.goalReached = false;
     game.articleCounter = 0;
     game.articleArchive = [];
-    document.querySelector('#contextNode').innerHTML = '';
+    document.querySelector('#wikipedia-article').innerHTML = '';
   };
   return game;
 });

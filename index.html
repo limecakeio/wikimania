@@ -20,21 +20,21 @@
                         <h1>Wikimania</h1>
                         <h4>by</h4>
                         <h4>Pixelpedia</h4></div>
-                    <div class="g12" id="title-screen-button">
-                        <div class="button button-green" onclick="openSection('naming-screen')">Spiel starten</div>
+                    <div class="g12" id="title-screen-button" ng-controller="wikimania-player-controller">
+                        <div class="button button-green" ng-click="enterNewGame()">Spiel starten</div>
                         <div class="button button-lightblue" onclick="openSection('highscore')">Highscore</div>
                         <div class="button button-darkblue" id="game-rules">Spielregeln</div>
                         <div class="button button-red" onclick="window.close()">Exit</div>
                     </div>
                 </div>
             </section>
-            <section id="naming-screen">
+            <section id="naming-screen" ng-controller="wikimania-player-controller">
                 <div class="g12 align-left return-button"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
                 <div class="form-group" id="naming-screen-form">
                     <label for="name-field">Spielernamen eingeben</label>
                     <input id="name-field" name="playerName" type="text" required="required" placeholder="Spielernamen hier eingeben" value="TestSpieler">
                 </div>
-                <div class="button button-green" id="confirm-name" onclick="openSection('difficulty-selection')">Bestätigen</div>
+                <div class="button button-green" id="confirm-name" ng-click="setPlayer()">Bestätigen</div>
             </section>
             <section id="game-rules-popup">
                 <div class="popup-controls">
@@ -107,8 +107,8 @@
                         </div>
                         <div class="g1"></div>
                     </div>
-                    <div class="g12 start-game-button">
-                        <div class="button button-green" onclick="openSection('wikipedia-content')">Spiel starten</div>
+                    <div class="g12 start-game-button" ng-controller="wikimania-game-gui-controller">
+                        <div class="button button-green" ng-click="initiateSimpleGame()">Spiel starten</div>
                     </div>
                 </div>
             </section>
@@ -143,12 +143,12 @@
                     </div>
                 </div>
             </section>
-            <section id="highscore">
+            <section id="highscore" ng-controller="wikimania-hs-controller">
                 <div class="container">
                     <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
                     <div class="g12">
                         <h2>Highscores</h2>
-                        <div class="g12" id="highscore-table">
+                        <div class="g12" id="highscore-table" data-ng-init="getAllHighscores()">
                             <table class="align-center">
                                 <thead>
                                     <tr>
@@ -189,12 +189,6 @@
                 </div>
                 <div class="container">
                     <div id="wikipedia-article">
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
                     </div>
                 </div>
             </section>
@@ -226,6 +220,8 @@
     <script src="src/js/gui.js"></script>
     <script src="src/js/index.js"></script>
     <script src="src/js/game.js"></script>
+    <script src="src/js/highscores.js"></script>
+    <script src="src/js/player.js"></script>
     <script src="src/js/network.js"></script>
 </body>
 

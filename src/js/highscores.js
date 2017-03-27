@@ -37,7 +37,7 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) 
 
         //Display the hall-of-fame in a table
         let gameTable = document.createElement("table");
-        gameTable.classList.add("game-container");
+        gameTable.classList.add("align-center");
 
         //Set up the table's headings
         let positionCell = document.createElement("th");
@@ -88,7 +88,7 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) 
         highscoresContainer.append(gameTable);
 
         //Inject the highscores into the view
-        let highscoreView = document.querySelector("#finish-selection-easy");
+        let highscoreView = document.querySelector("#highscore-table");
         //Reset the view prior to injecting new data
         highscoreView.innerHTML = "";
         highscoreView.append(highscoresContainer);
@@ -98,9 +98,9 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) 
   };
 
   //Saves the game's end score to the highscores.json file
-  function saveHighscore() {
-    let startID = 287816;
-    let endID = 2166425;
+  function saveHighscore(start, end) {
+    let startID = start;
+    let endID = end;
     //Create the highscore for the current game
     let newHighscore = [];
 
