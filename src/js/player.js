@@ -1,13 +1,9 @@
-/**
-Handles all the player logic required for the game.
-*/
-angular.module('wikimania',[]).controller('wikimania-player-controller', function ($scope, wikipediaAPI) {
+wikimania.controller('wikimania-player-controller', function ($scope, wikipediaAPI) {
   const userFilePath = "src/assets/user.json";
-
+  const fs = require('fs');
   //Sets the player in the user.json file
   function setPlayer(name){
     let player = getPlayer();
-    console.log(player);
     player["user"] = name;
     fs.writeFileSync(userFilePath, JSON.stringify(player));
   };
@@ -22,4 +18,4 @@ angular.module('wikimania',[]).controller('wikimania-player-controller', functio
     return (typeof getPlayer() !== 'undefined');
   };
   console.log("Player is set: ", playerIsSet());
-};
+})

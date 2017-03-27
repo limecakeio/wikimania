@@ -1,5 +1,3 @@
-const wikimania = angular.module('wikimania');
-
 wikimania.factory('wikipediaAPI', $http => {
   let self = this;
   const wikipediaAPI = {};

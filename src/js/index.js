@@ -1,41 +1,42 @@
-angular.module('wikimania',[]).controller('wikimania-controller', function ($scope, $timeout, $window, $http, wikipediaAPI) {
-
+const wikimania = angular.module('wikimania',[]);
+wikimania.factory('game', wikipediaAPI => {
+  console.log('index');
   //const fs = require('fs');
+  //game.fs = fs;
+  const game = {};
 
-  //$scope.fs = fs;
-
-  $scope.activeArticle = {
+  game.activeArticle = {
     html: '',
     title: '',
     id: ''
   };
 
-  $scope.startArticle = null;
+  game.startArticle = null;
 
-  $scope.articleCounter = 0;
+  game.articleCounter = 0;
 
-  $scope.goalReached = false;
+  game.goalReached = false;
 
-  $scope.articleArchive = [];
+  game.articleArchive = [];
 
-  $scope.endArticle = {
+  game.endArticle = {
     title: '',
     html: '',
     preview: '',
     id: -1
   };
 
-  $scope.setDifficultiy = diff => {
+  game.setDifficultiy = diff => {
     difficultiy = diff;
   };
 
-  $scope.startGameExpert = () => {
+  game.startGameExpert = () => {
     wikipediaAPI.getRandomArticle((article, error) => {
       if (error !== null) {
         console.error(error);
       } else {
-        $scope.startArticle = article;
-        $scope.activeArticle = article;
+        game.startArticle = article;
+        game.activeArticle = article;
         document.querySelector('#contextNode').innerHTML = article.html;
       }
     });
@@ -43,9 +44,9 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (error !== null) {
         console.error(error);
       } else {
-        $scope.endArticle.id = article.id;
-        $scope.endArticle.title = article.title;
-        $scope.endArticle.html = article.html;
+        game.endArticle.id = article.id;
+        game.endArticle.title = article.title;
+        game.endArticle.html = article.html;
       }
     });
   };
@@ -54,13 +55,13 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
    * sets the activeArticle object with the argument startID
    * endArticle is saved internally
    */
-  $scope.startGame = function(startID, endID) {
+  game.startGame = function(startID, endID) {
     wikipediaAPI.getArticle(startID, (article, error) => {
       if (error !== null) {
         console.error(error);
       } else {
-        $scope.startArticle = article;
-        $scope.activeArticle = article;
+        game.startArticle = article;
+        game.activeArticle = article;
         document.querySelector('#contextNode').innerHTML = article.html;
       }
     });
@@ -68,24 +69,24 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (error !== null) {
         console.error(error);
       } else {
-        $scope.endArticle.id = article.id;
-        $scope.endArticle.title = article.title;
-        $scope.endArticle.html = article.html;
+        game.endArticle.id = article.id;
+        game.endArticle.title = article.title;
+        game.endArticle.html = article.html;
       }
     });
   };
 
   const checkArticle = function() {
-    if ($scope.articleArchive[$scope.articleArchive.length - 1].id === $scope.endArticle.id) {
-      $scope.goalReached = true;
+    if (game.articleArchive[game.articleArchive.length - 1].id === game.endArticle.id) {
+      game.goalReached = true;
       console.log('fin');
-      $scope.addArticleArchive('articles');
+      game.addArticleArchive('articles');
     }
   };
 
-  $scope.addArticleArchive = selector => {
+  game.addArticleArchive = selector => {
     let node = document.querySelector('#' + selector);
-    $scope.articleArchive.forEach(article => {
+    game.articleArchive.forEach(article => {
       let element = document.createElement('p');
       element.innerHTML = article.title;
       node.append(element);
@@ -97,28 +98,28 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (error !== null) {
         console.error(error);
       } else {
-        $scope.activeArticle = article;
-        $scope.articleCounter++;
-        $scope.articleArchive.push(article);
+        game.activeArticle = article;
+        game.articleCounter++;
+        game.articleArchive.push(article);
         document.querySelector('#contextNode').innerHTML = article.html;
         checkArticle();
       }
     });
   };
 
-  $scope.getRandomArticle = () => {
+  game.getRandomArticle = () => {
     wikipediaAPI.getRandomArticle((article, error) => {
       if (error !== null) {
         console.error(error);
       } else {
-        $scope.activeArticle = article;
+        game.activeArticle = article;
         document.querySelector('#contextNode').innerHTML = article.html;
       }
     });
   };
 
-  $scope.getPreview = (identifier) => {
-    wikipediaAPI.getPreview(((identifier) ? identifier : $scope.endArticle.id), (preview, error) => {
+  game.getPreview = (identifier) => {
+    wikipediaAPI.getPreview(((identifier) ? identifier : game.endArticle.id), (preview, error) => {
       if (error !== null) {
         console.error(error);
       } else {
@@ -146,13 +147,13 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       document.attachEvent('onclick', clickEventHandler);
   }
 
-  $scope.reset = () => {
-    $scope.activeArticle = null;
-    $scope.endArticle = null;
-    $scope.goalReached = false;
-    $scope.articleCounter = 0;
-    $scope.articleArchive = [];
+  game.reset = () => {
+    game.activeArticle = null;
+    game.endArticle = null;
+    game.goalReached = false;
+    game.articleCounter = 0;
+    game.articleArchive = [];
     document.querySelector('#contextNode').innerHTML = '';
   };
-
+  return game;
 });

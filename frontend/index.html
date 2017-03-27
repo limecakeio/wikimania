@@ -92,13 +92,13 @@
             <section id="preparation-screen-easy-mode">
                 <div class="container">
                     <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
-                    <div class="g12">
+                    <div class="g12" ng-controller="wikimania-game-gui-controller">
                         <h3>Easy Mode</h3>
                         <div class="g1"></div>
                         <div class="g5" id="start-selection-easy">
                             <button class="accordion">Start</button>
-                            <div class="panel" id="easy-starts">
-                                <p>Start 1</p>
+                            <div class="panel" id="easy-starts" ng-init="generateGameList('#easy-start')">
+                                <!-- <p>Start 1</p>
                                 <p>Start 2</p>
                                 <p>Start 3</p>
                                 <p>Start 4</p>
@@ -107,13 +107,13 @@
                                 <p>Start 7</p>
                                 <p>Start 8</p>
                                 <p>Start 9</p>
-                                <p>Start 10</p>
+                                <p>Start 10</p> -->
                             </div>
                         </div>
                         <div class="g5" id="finish-selection-easy">
                             <button class="accordion">Ziel</button>
-                            <div class="panel" id="easy-ends">
-                                <p>Ziel 1</p>
+                            <div class="panel" id="easy-ends" ng-init="generateGameList('#easy-ends')">
+                                <!-- <p>Ziel 1</p>
                                 <p>Ziel 2</p>
                                 <p>Ziel 3</p>
                                 <p>Ziel 4</p>
@@ -122,7 +122,7 @@
                                 <p>Ziel 7</p>
                                 <p>Ziel 8</p>
                                 <p>Ziel 9</p>
-                                <p>Ziel 10</p>
+                                <p>Ziel 10</p> -->
                             </div>
                         </div>
                         <div class="g1"></div>
@@ -242,7 +242,9 @@
             </section>
         </article>
     </main>
-    <script src="index.js"></script>
+    <script src="src/js/gui.js"></script>
+    <script src="src/js/index.js"></script>
+    <script src="src/js/network.js"></script>
 </body>
 
 </html>

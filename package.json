@@ -2,7 +2,7 @@
   "name": "wikimania",
   "version": "0.0.1",
   "description": "A crazy race through Wikipedia",
-  "main": "highscores.html",
+  "main": "index.html",
   "scripts": {
   },
   "repository": {
@@ -10,6 +10,7 @@
     "url": "git+https://github.com/limecakeio/wikimania.git"
   },
   "window": {
+        "icon" : "favicon.ico",
         "toolbar": false,
         "width": 1024,
         "height": 768,

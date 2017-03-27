@@ -1,4 +1,4 @@
-angular.module('wikimania',[]).controller('wikimania-hs-controller', function ($scope, wikipediaAPI) {
+wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) {
   const highscoreFilePath = "src/assets/highscores.json";
   const fs = require('fs');
 
