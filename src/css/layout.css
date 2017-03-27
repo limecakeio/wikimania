@@ -1,4 +1,4 @@
-h1 {
+#title-screen h1 {
     font-size: 58px;
     line-height: 20px;
     margin: 20px auto;
@@ -30,7 +30,7 @@ h5 {
     cursor: pointer;
 }
 
-#preparation-screen-easy-mode p .clicked {
+#preparation-screen-easy-mode p.clicked {
     font-weight: bold;
     color: blue;
 }
@@ -494,6 +494,25 @@ a {
     position: relative;
     top: 80px;
     z-index: 0;
+    text-align: left;
+    font-family: 'PT Serif', serif;
+}
+
+#wikipedia-article p {
+    line-height: 16px;
+    font-size: 16px;
+}
+
+#wikipedia-article h1 {
+    line-height: 21px;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+#wikipedia-article h2,h3,h4,h5,h6 {
+    line-height: 19px;
+    font-size: 19px;
+    font-weight: bold;
 }
 
 /* TRANSITIONS*/

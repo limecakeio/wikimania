@@ -1,12 +1,11 @@
 /* List Element Highlighting */
-var hightlightElement = function(element) {
-    var allElements = [].slice.call(document.querySelectorAll('#preparation-screen-easy-mode p'));
+var highlightElement = function(element) { 
+    var allElements = [].slice.call(document.querySelectorAll('#' + element.parentNode.id +' p'));
     allElements.map(function(element) {
         element.classList.remove('clicked');
     });
-    element.className += ' clicked';
-};
-
+     element.className += ' clicked';
+ };
 
 /* Transition Effects for Sections */
 
