@@ -148,9 +148,3 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
   };
 
 });
-/*
- * startGame(287816, 2166425) -> Kulturapfel -> Hessen
- * startGame(7941746, 8372077)
- * startGame(1526957, 805737)
- * 4492770, 3166949
- */
