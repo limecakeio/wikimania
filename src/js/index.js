@@ -70,7 +70,7 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
   const checkArticle = function() {
     if ($scope.articleArchive[$scope.articleArchive.length - 1].id === $scope.endArticle.id) {
       $scope.goalReached = true;
-      console.log('fin ');
+      console.log('fin');
       $scope.addArticleArchive('articles');
     }
   };
