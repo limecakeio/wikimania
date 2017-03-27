@@ -1,5 +1,5 @@
 /* List Element Highlighting */
-var highlightElement = function(element) { 
+var highlightElement = function(element) {
     var allElements = [].slice.call(document.querySelectorAll('#' + element.parentNode.id +' p'));
     allElements.map(function(element) {
         element.classList.remove('clicked');
