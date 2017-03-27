@@ -177,13 +177,13 @@
                     </div>
                 </div>
             </section>
-            <section id="wikipedia-content">
+            <section id="wikipedia-content" ng-controller="wikimania-game-gui-controller">
                 <div class="g12 box" id="wikipedia-content-info">
                     <div class="g4">
-                        <p>Ziel:</p>
+                        <p>Ziel: {{game.endArticle.title}}</p>
                     </div>
                     <div class="g4">
-                        <p id="current-clicks">Clicks:</p>
+                        <p id="current-clicks">Clicks: {{game.articleCounter}}</p>
                     </div>
                     <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
                 </div>

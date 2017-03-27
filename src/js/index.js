@@ -2,6 +2,15 @@ const wikimania = angular.module('wikimania',[]);
 wikimania.factory('game', wikipediaAPI => {
   const game = {};
 
+  let contextNode = null;
+
+  game.setNode = (identifier) => {
+    contextNode = document.querySelector('#' + identifier);
+    if (contextNode === null) {
+      throw new Error('no valid indentifier');
+    }
+  };
+
   game.activeArticle = {
     html: '',
     title: '',
@@ -34,7 +43,7 @@ wikimania.factory('game', wikipediaAPI => {
       } else {
         game.startArticle = article;
         game.activeArticle = article;
-        document.querySelector('#wikipedia-article').innerHTML = article.html;
+        contextNode.innerHTML = article.html;
       }
     });
     wikipediaAPI.getRandomArticle((article, error) => {
@@ -59,7 +68,7 @@ wikimania.factory('game', wikipediaAPI => {
       } else {
         game.startArticle = article;
         game.activeArticle = article;
-        document.querySelector('#wikipedia-article').innerHTML = article.html;
+        contextNode.innerHTML = article.html;
         window.scrollTop;
       }
     });
@@ -99,7 +108,7 @@ wikimania.factory('game', wikipediaAPI => {
         game.activeArticle = article;
         game.articleCounter++;
         game.articleArchive.push(article);
-        document.querySelector('#wikipedia-article').innerHTML = article.html;
+        contextNode.innerHTML = article.html;
         checkArticle();
       }
     });
@@ -111,7 +120,7 @@ wikimania.factory('game', wikipediaAPI => {
         console.error(error);
       } else {
         game.activeArticle = article;
-        document.querySelector('#wikipedia-article').innerHTML = article.html;
+        contextNode.innerHTML = article.html;
       }
     });
   };
@@ -151,7 +160,7 @@ wikimania.factory('game', wikipediaAPI => {
     game.goalReached = false;
     game.articleCounter = 0;
     game.articleArchive = [];
-    document.querySelector('#wikipedia-article').innerHTML = '';
+    contextNode.innerHTML = '';
   };
   return game;
 });
