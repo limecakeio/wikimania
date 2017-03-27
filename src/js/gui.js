@@ -1,45 +1,12 @@
-var easyStartList = document.querySelector('#start-selection-easy');
-var easyStartListElement = [].slice.call(document.querySelectorAll('#start-selection-easy p'));
-var easyFinishList = document.querySelector('#finish-selection-easy');
-var easyFinishListElement = [].slice.call(document.querySelectorAll('#finish-selection-easy p'));
-var easyModeArrow = document.querySelector('.continue-arrow');
-
 /* List Element Highlighting */
-var index = 0;
-easyStartListElement.map(function(element) {
-    element.onmouseenter = function() {
-        easyStartListElement.map(function(element) {
-            element.classList.remove('active');
-        });
-        element.className += ' active';
-    }
-    index++;
-    element.onmousedown = function() {
-        easyStartListElement.map(function(element) {
-            element.classList.remove('clicked');
-        });
-        element.className += ' clicked';
-        easyModeArrow.style.color = 'tomato';
-    }
-    index++
-});
-index = 0;
-easyFinishListElement.map(function(element) {
-    element.onmouseenter = function() {
-        easyFinishListElement.map(function(element) {
-            element.classList.remove('active');
-        });
-        element.className += ' active';
-    }
-    index++;
-    element.onmousedown = function() {
-        easyFinishListElement.map(function(element) {
-            element.classList.remove('clicked');
-        });
-        element.className += ' clicked';
-    }
-    index++;
-});
+var hightlightElement = function(element) {
+    var allElements = [].slice.call(document.querySelectorAll('#preparation-screen-easy-mode p'));
+    allElements.map(function(element) {
+        element.classList.remove('clicked');
+    });
+    element.className += ' clicked';
+};
+
 
 /* Transition Effects for Sections */
 

@@ -29,12 +29,10 @@ h5 {
 #preparation-screen-easy-mode p {
     cursor: pointer;
 }
-#preparation-screen-easy-mode p.active {
+
+#preparation-screen-easy-mode p .clicked {
     font-weight: bold;
-}
-#preparation-screen-easy-mode p.clicked {
-    font-weight: bold;
-    color: tomato;
+    color: blue;
 }
 ul {
     display: inline-block;
@@ -407,6 +405,11 @@ a {
 }
 /* Preparation Screen */
 
+#preparation-screen-easy-mode .panel p:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 #preparation-screen-easy-mode button {
     font-size: 26px;
 }
@@ -465,6 +468,11 @@ a {
 #wikipedia-content {
     margin-top: 0%;
     margin-bottom: 40px;
+}
+
+#wikipedia-content a {
+    cursor: pointer;
+    background-color: #F26101;
 }
 
 #wikipedia-content .box {
