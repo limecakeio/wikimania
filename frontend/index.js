@@ -62,42 +62,49 @@ openSection('title-screen');
 /* Difficulty Selection Description Popup */
 var beginnerButton = document.querySelector('#difficulty-selection-mode .button.button-green');
 var expertButton = document.querySelector('#difficulty-selection-mode .button.button-red');
+var challengeButton = document.querySelector('#difficulty-selection-mode .button.button-darkblue');
 var beginnerDescription = document.querySelector('#difficulty-selection-mode #beginner-mode-info');
 var expertDescription = document.querySelector('#difficulty-selection-mode #expert-mode-info');
-var difficultyTriangle = document.querySelector('#difficulty-selection-mode .triangle');
-
+var challengeDescription = document.querySelector('#difficulty-selection-mode #challenge-mode-info');
+var triangleLeft = document.querySelector('#difficulty-selection-mode .triangle-left');
+var triangleRight = document.querySelector('#difficulty-selection-mode .triangle-right');
+var triangleUp = document.querySelector('#difficulty-selection-mode .triangle-up');
 beginnerButton.onmouseenter = function() {
- beginnerDescription.className += ' active';
- difficultyTriangle.className += ' beginner-triangle';
+    beginnerDescription.className += ' active';
+    triangleLeft.className += ' beginner-triangle';
 };
 beginnerButton.onmouseleave = function() {
- beginnerDescription.classList.remove('active');
- difficultyTriangle.classList.remove('beginner-triangle');
+    beginnerDescription.classList.remove('active');
+    triangleLeft.classList.remove('beginner-triangle');
 };
-
 expertButton.onmouseenter = function() {
- expertDescription.className += ' active';
- difficultyTriangle.className += ' expert-triangle';
+    expertDescription.className += ' active';
+    triangleRight.className += ' expert-triangle';
 };
 expertButton.onmouseleave = function() {
- expertDescription.classList.remove('active');
- difficultyTriangle.classList.remove('expert-triangle');
+    expertDescription.classList.remove('active');
+    triangleRight.classList.remove('expert-triangle');
 };
-
+challengeButton.onmouseenter = function() {
+    challengeDescription.className += ' active';
+    triangleUp.className += ' challenge-triangle';
+};
+challengeButton.onmouseleave = function() {
+    challengeDescription.classList.remove('active');
+    triangleUp.classList.remove('challenge-triangle');
+};
 var accordion = document.getElementsByClassName('accordion');
-
 var i;
 for (i = 0; i < accordion.length; i++) {
-	accordion[i].onclick = function() {
-		this.classList.toggle('active');
-		var panel = this.nextElementSibling;
-		if (panel.style.display) {
-			panel.style.display = null;
-		} 
-		else {
-			panel.style.display = 'block';
-		} 
-	}
+    accordion[i].onclick = function() {
+        this.classList.toggle('active');
+        var panel = this.nextElementSibling;
+        if (panel.style.display) {
+            panel.style.display = null;
+        } else {
+            panel.style.display = 'block';
+        }
+    }
 }
 
 /* Game Rule Slides and Popup*/

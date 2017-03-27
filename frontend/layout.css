@@ -53,13 +53,13 @@ a {
     -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
     -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35);
-    min-width: 180px;
-    min-height: 180px;
+    width: 100px;
+    height: 150px;
 }
 /* GRIDSYSTEM */
 
 .container {
-    width: 1200px;
+    width: 1024px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 30px;
@@ -130,24 +130,90 @@ a {
 }
 /* TRIANGLE */
 
-.triangle {
+.triangle-left {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 20px 30px 20px;
+    border-width: 15px 30px 15px 0;
+    border-color: transparent #ffffff transparent transparent;
+    display: none;
+}
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 30px;
+    border-color: transparent transparent transparent #ffffff;
+    display: none;
+}
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 30px 15px;
     border-color: transparent transparent #ffffff transparent;
     display: none;
 }
-.triangle.beginner-triangle {
-    margin-left: 260px;
-    margin-top: -20px;
+.beginner-triangle {
+    border-color: transparent yellow transparent transparent;
+    margin-left: 68%;
+    margin-top: -18%;
     display: block;
 }
-.triangle.expert-triangle {
-    margin-left: 820px;
-    margin-top: -20px;
+.expert-triangle {
+    border-color: transparent transparent transparent yellow;
+    margin-left: 29%;
+    margin-top: -11%;
     display: block;
 }
+.challenge-triangle {
+    border-color: transparent transparent yellow transparent;
+    margin-left: 49%;
+    margin-top: -1%;
+    display: block;
+}
+#button-container {
+    margin-top: 20px;
+}
+#difficulty-selection {
+    margin-top: 10%;
+}
+#difficulty-selection .button {
+    width: 300px;
+    margin: 10px 0px;
+}
+#difficulty-selection-mode {
+    min-height: 500px;
+    margin-top: 40px;
+}
+#difficulty-selection-mode #beginner-mode-info {
+    margin-left: 71%;
+    margin-top: -23%;
+    display: none;
+}
+#difficulty-selection-mode #beginner-mode-info.active {
+    display: block;
+}
+#difficulty-selection-mode #expert-mode-info {
+    margin-left: -21%;
+    margin-top: -18%;
+    display: none;
+}
+#difficulty-selection-mode #expert-mode-info.active {
+    display: block;
+}
+#difficulty-selection-mode #challenge-mode-info {
+    margin-left: 25%;
+    margin-top: 0%;
+    display: none;
+}
+#difficulty-selection-mode #challenge-mode-info.active {
+    display: block;
+}
+#mode-information li {
+    font-size: 20px;
+}
+
 / GOOGLE MATERIAL ICONS / .material-icons {
     display: inline-flex;
     align-items: center;
@@ -248,7 +314,7 @@ a {
     top: 50px;
 }
 #title-screen {
-    margin-top: 150px;
+    margin-top: 50px;
 }
 #title-screen-button {
     margin-top: 10px;
@@ -280,33 +346,48 @@ a {
     box-shadow: 0 5px #666;
     transform: translateY(1px);
 }
-#difficulty-selection .button {
-    width: 200px;
-    margin: 20px 0px;
+##button-container {
+    margin-top: 20px;
 }
-#difficulty-selection .button-darkblue {
-    width: 800px;
+#difficulty-selection {
+    margin-top: 10%;
+}
+#difficulty-selection .button {
+    width: 300px;
+    margin: 10px 0px;
 }
 #difficulty-selection-mode {
     min-height: 500px;
     margin-top: 40px;
 }
 #difficulty-selection-mode #beginner-mode-info {
-    margin-left: 160px;
-    margin-top: 0px;
+    margin-left: 71%;
+    margin-top: -23%;
     display: none;
 }
 #difficulty-selection-mode #beginner-mode-info.active {
     display: block;
 }
 #difficulty-selection-mode #expert-mode-info {
-    margin-left: 397px;
-    margin-top: 0px;
+    margin-left: -21%;
+    margin-top: -18%;
     display: none;
 }
 #difficulty-selection-mode #expert-mode-info.active {
     display: block;
 }
+#difficulty-selection-mode #challenge-mode-info {
+    margin-left: 25%;
+    margin-top: 0%;
+    display: none;
+}
+#difficulty-selection-mode #challenge-mode-info.active {
+    display: block;
+}
+#mode-information li {
+    font-size: 20px;
+}
+
 #naming-screen {
     margin-top: 220px;
 }
@@ -325,8 +406,8 @@ a {
     height: 700px;
     z-index: -1;
     transition: all .5s ease-in-out;
-    margin-top: 120px;
-    margin-left: 220px;
+    margin-top: 4%;
+	margin-left: 10%;
     margin-bottom: 0%;
 }
 #game-rules-popup.active {
@@ -363,8 +444,7 @@ a {
     color: #fff;
 }
 #game-rules-popup img {
-    margin-top: 50px;
-    margin-left: 10%;
+	margin-left: 1%;
     opacity: 1.0;
 }
 #popup-close {
@@ -377,19 +457,40 @@ a {
 #preparation-screen-easy-mode button {
     font-size: 26px;
 }
-#preparation-screen-easy-mode .g4 {
+#preparation-screen-easy-mode .panel {
+    min-height: 400px;
+}
+#preparation-screen-easy-mode .g5 {
     padding-top: 30px;
     min-height: 500px;
     font-size: 30px;
     line-height: 40px;
 }
-#preparation-screen-easy-mode .box {
-    min-height: 500px;
+#preparation-screen-easy-mode .g10 {
+    min-height: 180px;
+    line-height: 30px;
+    font-size: 30px;
+    margin-top: 200px;
+}
+
+#preparation-screen-hard-mode .panel {
+    min-height: 120px;
+}
+#preparation-screen-hard-mode .panel p{
+    line-height: 40px;
+    font-size: 40px;
+    margin-top: 30px;
+}
+#preparation-screen-hard-mode .g12 {
+    margin-top: 20px;
+}
+#preparation-screen-hard-mode button {
     line-height: 30px;
     font-size: 30px;
 }
-#preparation-screen-hard-mode .box {
-    min-height: 500px;
+
+#preparation-screen-hard-mode .g10 {
+    min-height: 200px;
     line-height: 30px;
     font-size: 30px;
 }
@@ -407,11 +508,39 @@ a {
 .start-game-button {
     margin-top: 10px;
 }
+
+#wikipedia-content {
+    margin-top: 0%;
+    margin-bottom: 40px;
+}
+
+#wikipedia-content .box {
+    margin: 0;
+    height: 60px;
+}
+
+#wikipedia-content-info {
+    font-size: 24px;
+    line-height: 20px;
+    position: fixed;
+    z-index: 3;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 100%;
+}
+
+#wikipedia-article {
+    position: relative;
+    top: 80px;
+    z-index: 0;
+}
+
 /* TRANSITIONS*/
 
 body {
-    /*overflow-x: hidden;*/
-    
+    overflow-x: hidden;
+
+
     background-color: #F1F1F1;
     font-family: 'Quicksand', sans-serif;
 }

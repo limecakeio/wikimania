@@ -3,6 +3,7 @@
 
 <head>
     <title>Wikimania</title>
+    <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Quicksand|Alegreya" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
@@ -23,69 +24,77 @@
                         <div class="button button-green" onclick="openSection('difficulty-selection')">Spiel starten</div>
                         <div class="button button-lightblue" onclick="openSection('highscore')">Highscore</div>
                         <div class="button button-darkblue" id="game-rules">Spielregeln</div>
-                        <div class="button button-red" onclick="openSection('title-screen')">Exit</div>
+                        <div class="button button-red" onclick="window.close()">Exit</div>
                     </div>
                 </div>
             </section>
-            <section id="naming-screen"><a onclick="openSection('title-screen')">Zurück</a>
+            <section id="naming-screen"><a onclick="openSection('title-screen')">ZurÃ¼ck</a>
                 <div class="form-group">
                     <label for="name-field">Spielernamen eingeben</label>
                     <input id="name-field" name="playerName" type="text" required="required" placeholder="Spielernamen hier eingeben" value="TestSpieler">
                 </div>
-                <div class="button button-green" id="confirm-name" onclick="openSection('difficulty-selection')">Bestätigen</div>
+                <div class="button button-green" id="confirm-name" onclick="openSection('difficulty-selection')">BestÃ¤tigen</div>
             </section>
             <section id="game-rules-popup">
                 <div class="popup-controls">
-                    <div id="popup-close"> <i class="material-icons">&#xE5CD;</i></div>
+                    <div id="popup-close"><i class="material-icons">&#xE5CD;</i></div>
                     <div class="slide-left"><i class="material-icons" onclick="ruleSlide(-1)">&#xE5CB;</i></div>
                     <div class="slide-right"><i class="material-icons" onclick="ruleSlide(1)">&#xE5CC;</i></div>
                 </div>
-                <div class="popup-content"><img class="game-rules" src="Spielregeln.png" width="1200" height="auto"><img class="game-rules" src="Spielfeatures.png" width="1200" height="auto"></div>
+                <div class="popup-content"><img class="game-rules" src="Spielregeln.png" width="800" height="auto"><img class="game-rules" src="Spielfeatures.png" width="800" height="auto"></div>
             </section>
             <section id="difficulty-selection">
                 <div class="container">
-                    <div class="g12 align-left return-button"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12 align-left return-button"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C4;</i>ZurÃ¼ck</a></div>
                     <h2>Schwierigkeitsgrad</h2>
                     <div class="g12" id="difficulty-selection-mode">
-                        <div class="g6">
-                            <div class="button button-green" onclick="openSection('preparation-screen-easy-mode')">Einsteiger</div>
+                        <div class="container" id="button-container">
+                            <div class="g12 align-center">
+                                <div class="button button-green" onclick="openSection('preparation-screen-easy-mode')">Einsteiger</div>
+                            </div>
+                            <div class="g12 align-center">
+                                <div class="button button-red" onclick="openSection('preparation-screen-hard-mode')">Experte</div>
+                            </div>
+                            <div class="g12 align-center">
+                                <div class="button button-darkblue" onclick="openSection('highscore')">Challenge a Highscore</div>
+                            </div>
                         </div>
-                        <div class="g6">
-                            <div class="button button-red" onclick="openSection('preparation-screen-hard-mode')">Experte</div>
-                        </div>
-                        <div class="g12">
-                            <div class="triangle"></div>
-                            <div class="g6 box align-left" id="beginner-mode-info">
+                        <div class="g12" id="mode-information">
+                            <div class="triangle-left"></div>
+                            <div class="triangle-right"></div>
+                            <div class="triangle-up"></div>
+                            <div class="g6 box" id="beginner-mode-info">
                                 <h5>Besonderheiten beim Einsteiger-Modus</h5>
-                                <ul>
-                                    <li>Start und Ziel dürfen von ihnen aus einer Liste ausgewählt werden</li>
-                                    <li>Bei Mouseover über einen Link wird eine Vorschau angezeigt</li>
-                                    <li>Empfehlenswert für Anfänger</li>
+                                <ul class="align-left">
+                                    <li>- Start und Ziel auswÃ¤hlbar</li>
+                                    <li>- Empfehlenswert fÃ¼r AnfÃ¤nger</li>
                                 </ul>
                             </div>
-                            <div class="g6 box align-left" id="expert-mode-info">
+                            <div class="g6 box" id="expert-mode-info">
                                 <h5>Besonderheiten beim Experten-Modus</h5>
-                                <ul>
-                                    <li>Start und Ziel werden per Zufall ausgewählt</li>
-                                    <li>Keine Vorschau bei Mouseover</li>
-                                    <li>Empfehlenswert für geübte Spieler</li>
+                                <ul class="align-left">
+                                    <li>- Start und Ziel per Zufall ausgewÃ¤hlt</li>
+                                    <li>- Empfehlenswert fÃ¼r geÃ¼bte Spieler</li>
+                                </ul>
+                            </div>
+                            <div class="g6 box" id="challenge-mode-info">
+                                <h5>Speziell von Wikimania</h5>
+                                <ul class="align-left">
+                                    <li>- Ein vorhandenen HighScore Ã¼bertreffen</li>
+                                    <li>- Sich in der Bestenliste verewigen</li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div class="g12">
-                        <h4>OR</h4>
-                        <div class="button button-darkblue" onclick="openSection('highscore')">Challenge a Highscore</div>
                     </div>
                 </div>
             </section>
             <section id="preparation-screen-easy-mode">
                 <div class="container">
-                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>ZurÃ¼ck</a></div>
                     <div class="g12">
                         <h3>Easy Mode</h3>
                         <div class="g1"></div>
-                        <div class="g4" id="start-selection-easy">
+                        <div class="g5" id="start-selection-easy">
                             <button class="accordion">Start</button>
                             <div class="panel" id="easy-starts">
                                 <p>Start 1</p>
@@ -93,10 +102,14 @@
                                 <p>Start 3</p>
                                 <p>Start 4</p>
                                 <p>Start 5</p>
+                                <p>Start 6</p>
+                                <p>Start 7</p>
+                                <p>Start 8</p>
+                                <p>Start 9</p>
+                                <p>Start 10</p>
                             </div>
                         </div>
-                        <div class="g2 continue-arrow"><i class="material-icons">&#xE8E4;</i></div>
-                        <div class="g4" id="finish-selection-easy">
+                        <div class="g5" id="finish-selection-easy">
                             <button class="accordion">Ziel</button>
                             <div class="panel" id="easy-ends">
                                 <p>Ziel 1</p>
@@ -104,6 +117,11 @@
                                 <p>Ziel 3</p>
                                 <p>Ziel 4</p>
                                 <p>Ziel 5</p>
+                                <p>Ziel 6</p>
+                                <p>Ziel 7</p>
+                                <p>Ziel 8</p>
+                                <p>Ziel 9</p>
+                                <p>Ziel 10</p>
                             </div>
                         </div>
                         <div class="g1"></div>
@@ -115,22 +133,29 @@
             </section>
             <section id="preparation-screen-hard-mode">
                 <div class="container">
-                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>ZurÃ¼ck</a></div>
                     <div class="g12">
-                        <h3>Hard Mode</h3>
-                        <div class="g1"></div>
-                        <div class="g4" id="start-selection-hard">
-                            <h3>Start</h3>
-                            <div class="box" id="hard-start"><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>Wähle einen anderen Startpunkt</a>
-                                <h4>Start</h4></div>
+                        <h3>Hard Mode</h3><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>WÃ¤hle einen neuen Start und Zielpunkt</a>
+                        <div class="g12">
+                            <div class="g1"></div>
+                            <div class="g10" id="start-selection-hard">
+                                <button class="accordion">Start:</button>
+                                <div class="panel">
+                                    <p>Startpunkt</p>
+                                </div>
+                            </div>
+                            <div class="g1"></div>
                         </div>
-                        <div class="g2 continue-arrow"><i class="material-icons">&#xE8E4;</i></div>
-                        <div class="g4" id="finish-selection-hard">
-                            <h3>Ziel</h3>
-                            <div class="box" id="hard-end"><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>Wähle einen anderen Zielpunkt</a>
-                                <h4>Ziel</h4></div>
+                        <div class="g12">
+                            <div class="g1"></div>
+                            <div class="g10" id="finish-selection-hard">
+                                <button class="accordion">Ziel:</button>
+                                <div class="panel">
+                                    <p>Zielpunkt</p>
+                                </div>
+                            </div>
+                            <div class="g1"></div>
                         </div>
-                        <div class="g1"></div>
                     </div>
                     <div class="g12 start-game-button">
                         <div class="button button-green" onclick="openSection('wikipedia-content')">Spiel starten</div>
@@ -139,7 +164,7 @@
             </section>
             <section id="highscore">
                 <div class="container">
-                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
+                    <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>ZurÃ¼ck</a></div>
                     <div class="g12">
                         <h2>Highscores</h2>
                         <div class="g12" id="highscore-table">
@@ -172,18 +197,23 @@
                 </div>
             </section>
             <section id="wikipedia-content">
-                <div class="container">
-                    <div class="g12">
-                        <div class="g4">
-                            <p>Ziel:</p>
-                        </div>
-                        <div class="g4">
-                            <p id="current-clicks">Clicks:</p>
-                        </div>
-                        <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
+                <div class="g12 box" id="wikipedia-content-info">
+                    <div class="g4">
+                        <p>Ziel:</p>
                     </div>
+                    <div class="g4">
+                        <p id="current-clicks">Clicks:</p>
+                    </div>
+                    <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
+                </div>
+                <div class="container">
                     <div id="wikipedia-article">
-                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a tryâ€¦ itâ€™s tasty!</p>
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a tryâ€¦ itâ€™s tasty!</p>
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a tryâ€¦ itâ€™s tasty!</p>
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a tryâ€¦ itâ€™s tasty!</p>
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a tryâ€¦ itâ€™s tasty!</p>
+                        <p>Bacon ipsum dolor amet picanha turducken sausage ball tip burgdoggen brisket. Tenderloin kielbasa tri-tip hamburger, jowl shoulder short loin pancetta pork ham strip steak filet mignon. Venison beef filet mignon chuck brisket pork loin. Jerky swine spare ribs, andouille venison salami hamburger tongue porchetta shoulder. Kielbasa beef burgdoggen jowl jerky ground round. Jerky tri-tip venison shank kielbasa. Flank brisket shankle meatloaf picanha fatback, pastrami andouille strip steak pig tenderloin ham beef ribs. Pastrami chicken chuck doner prosciutto. Ribeye jowl biltong shoulder, corned beef ball tip swine picanha short ribs tail t-bone bacon pig sausage pastrami. Ribeye swine ham hock cow pork capicola, pastrami alcatra landjaeger andouille meatloaf fatback shoulder strip steak meatball. Alcatra short ribs pastrami hamburger pig pork loin tenderloin pancetta flank meatloaf tongue. Pork belly pork loin shankle beef kielbasa pastrami swine picanha chuck cupim filet mignon strip steak fatback alcatra kevin. Pork belly cow filet mignon turducken biltong. Shankle andouille turkey pastrami capicola doner salami ham hock shoulder rump. Porchetta burgdoggen pork belly landjaeger sausage chicken. Spare ribs flank bresaola pork loin ribeye chicken. Tenderloin landjaeger short ribs cupim leberkas, kielbasa sausage. Ribeye bresaola cupim, salami swine turducken meatball chuck doner. Does your lorem ipsum text long for something a little meatier? Give our generator a tryâ€¦ itâ€™s tasty!</p>
                     </div>
                 </div>
             </section>
