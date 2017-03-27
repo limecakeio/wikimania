@@ -1,4 +1,4 @@
-wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) {
+wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI, game) {
   const highscoreFilePath = "src/assets/highscores.json";
   const fs = require('fs');
 
@@ -108,7 +108,8 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) 
     newHighscore[0] = Date.now();
 
     //Set the player
-    let player = getPlayer();
+//    let player = getPlayer();
+    let player = JSON.parse(fs.readFileSync('src/assets/user.json', 'utf8'));
     if(typeof player["user"] !== 'undefined') {
       newHighscore[1] = player["user"];
     } else {
@@ -134,6 +135,8 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI) 
     //Save the highscore file
     fs.writeFileSync(highscoreFilePath, JSON.stringify(highscores));
   }
+
+  game.setHighscoreCallback(saveHighscore);
 
   //Sorts array of arrays smallest to largest dependent on the amount of steps
   //a player used, which are stored in the third position of the score-array
