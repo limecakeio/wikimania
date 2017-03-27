@@ -12,17 +12,36 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
 
   $scope.articleArchive = [];
 
-  let endArticle = {
+  $scope.endArticle = {
     title: '',
     html: '',
     preview: '',
     id: -1
   };
 
-  let difficultiy = 0;
+  $scope.setDifficultiy = diff => {
+    difficultiy = diff;
+  };
 
-  let game = {};
-
+  $scope.startGameExpert = () => {
+    wikipediaAPI.getRandomArticle((article, error) => {
+      if (error !== null) {
+        console.error(error);
+      } else {
+        $scope.activeArticle = article;
+        document.querySelector('#contextNode').innerHTML = article.html;
+      }
+    });
+    wikipediaAPI.getRandomArticle((article, error) => {
+      if (error !== null) {
+        console.error(error);
+      } else {
+        $scope.endArticle.id = article.id;
+        $scope.endArticle.title = article.title;
+        $scope.endArticle.html = article.html;
+      }
+    });
+  };
 
   /*
    * sets the activeArticle object with the argument startID
@@ -41,18 +60,28 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (error !== null) {
         console.error(error);
       } else {
-        endArticle.id = article.id;
-        endArticle.title = article.title;
-        endArticle.html = article.html;
+        $scope.endArticle.id = article.id;
+        $scope.endArticle.title = article.title;
+        $scope.endArticle.html = article.html;
       }
     });
   };
 
   const checkArticle = function() {
-    if ($scope.articleArchive[$scope.articleArchive.length - 1].id === endArticle.id) {
+    if ($scope.articleArchive[$scope.articleArchive.length - 1].id === $scope.endArticle.id) {
       $scope.goalReached = true;
       console.log('fin ');
+      $scope.addArticleArchive('articles');
     }
+  };
+
+  $scope.addArticleArchive = selector => {
+    let node = document.querySelector('#' + selector);
+    $scope.articleArchive.forEach(article => {
+      let element = document.createElement('p');
+      element.innerHTML = article.title;
+      node.append(element);
+    });
   };
 
   const loadNewArticle = function(title) {
@@ -61,6 +90,7 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
         console.error(error);
       } else {
         $scope.activeArticle = article;
+        $scope.articleCounter++;
         $scope.articleArchive.push(article);
         document.querySelector('#contextNode').innerHTML = article.html;
         checkArticle();
@@ -79,8 +109,8 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
     });
   };
 
-  $scope.getPreview = (selector) => {
-    wikipediaAPI.getPreview(endArticle.id, (preview, error) => {
+  $scope.getPreview = (identifier) => {
+    wikipediaAPI.getPreview(((identifier) ? identifier : $scope.endArticle.id), (preview, error) => {
       if (error !== null) {
         console.error(error);
       } else {
@@ -107,6 +137,15 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
   } else if (document.attachEvent) {
       document.attachEvent('onclick', clickEventHandler);
   }
+
+  $scope.reset = () => {
+    $scope.activeArticle = null;
+    $scope.endArticle = null;
+    $scope.goalReached = false;
+    $scope.articleCounter = 0;
+    $scope.articleArchive = [];
+    document.querySelector('#contextNode').innerHTML = '';
+  };
 
 });
 /*

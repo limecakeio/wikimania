@@ -6,10 +6,14 @@
   </head>
   <body ng-app="wikimania">
 	<div ng-controller='wikimania-controller'>
-  <div ng-click="startGame(7719429, 3166949)" id='startGame'>Start Game</div>
+  <div ng-click="startGame(1526957, 805737)" id='startGame'>Start Game</div>
+  <div ng-click="startGameExpert()" id='expert'>Start Game Expert</div>
   <span>ID: {{activeArticle.id}}</span>
   <span>Title: {{activeArticle.title}}</span>
-  <div ng-click="getPreview('preview')" id='preview'>Preview</div>
+  <span>Clicks: {{articleCounter}}</span>
+  <div id = 'articles'>Weg:</div>
+  <div ng-click="getPreview()" id='preview'>Preview</div>
+  <div ng-click="reset()" id='reset'>Reset</div>
   <div ng-click="getRandomArticle()" id='random'>Zufall</div>
   <div id='goal'>{{goalReached}}</div>
 	</div>

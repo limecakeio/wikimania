@@ -207,7 +207,6 @@ wikimania.factory('wikipediaAPI', $http => {
         method: 'GET',
         url: 'https://de.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=pageterms|extracts&exintro=&explaintext=&pageids=' + id
     }).then(response => {
-      console.log(response.data);
       if (typeof response.data.warnings !== 'undefined') {
         callback(null, response.data.warnings);
       } else {
