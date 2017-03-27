@@ -1,20 +1,6 @@
-angular.module('wikimania',[]).controller('wikimania-hs-controller', function ($scope, $timeout, $window, $http) {
+angular.module('wikimania',[]).controller('wikimania-hs-controller', function ($scope, wikipediaAPI) {
   const highscoreFilePath = "src/assets/highscores.json";
-  const userFilePath = "src/assets/user.json";
   const fs = require('fs');
-
-  //TODO ONLY FOR TESTING PURPOSES SHOULD INTEGRATE HIGHSCORES INTO THE MAIN CONTROLLER!
-  const IDToTitle = function(id) {
-    return $http({
-	      method: 'GET',
-        url: 'https://de.wikipedia.org/w/api.php?origin=*&action=query&format=json&pageids=' + id
-    }).then(function successCallback(response) {
-      return response.data.query.pages['' + id].title;
-    }, function errorCallback(response) {
-      console.log('something went wrong');
-      return 'err';
-    });
-  };
 
   $scope.getAllHighscores = function() {
     //Load the current highscores
@@ -31,80 +17,88 @@ angular.module('wikimania',[]).controller('wikimania-hs-controller', function ($
       let gameList = game.split("_");
       let start;
       let finish;
-      IDToTitle(gameList[0]).then((startSite) => {
+      wikipediaAPI.IDToTitle(gameList[0], (startSite, error) => {
         start = startSite;
-        IDToTitle(gameList[1]).then((targetSite) => {
-          finish = targetSite;
 
-          //Create the game's title
-          let tableTitle = document.createElement("h3");
-          tableTitle.textContent = start + " => " + finish;
-          highscoresContainer.append(tableTitle);
+        wikipediaAPI.IDToTitle(gameList[1], (targetSite, error) => {
+        finish = targetSite;
 
-          //Display the hall-of-fame in a table
-          let gameTable = document.createElement("table");
-          gameTable.classList.add("game-container");
+        //Create the game's title
+        let tableTitle = document.createElement("h3");
+        tableTitle.textContent = start + " => " + finish;
+        highscoresContainer.append(tableTitle);
 
-          //Set up the table's headings
-          let positionCell = document.createElement("th");
-          positionCell.innerHTML="Position";
-          gameTable.append(positionCell);
+        //Create the challnge button
+        let challengeButton = document.createElement("div");
+        challengeButton.classList.add("button", "button-darkblue");
+        challengeButton.innerHTML="Take this challenge";
+        challengeButton.setAttribute('ng-click', 'startGame(' + gameList[0] + ',' + gameList[1] + ')');
+        highscoresContainer.append(challengeButton);
 
-          let dateCell = document.createElement("th");
-          dateCell.innerHTML="Date";
-          gameTable.append(dateCell);
+        //Display the hall-of-fame in a table
+        let gameTable = document.createElement("table");
+        gameTable.classList.add("game-container");
 
-          let playerCell = document.createElement("th");
-          playerCell.innerHTML="Player";
-          gameTable.append(playerCell);
+        //Set up the table's headings
+        let positionCell = document.createElement("th");
+        positionCell.innerHTML="Position";
+        gameTable.append(positionCell);
 
-          let stepsCell = document.createElement("th");
-          stepsCell.innerHTML="Steps";
-          gameTable.append(stepsCell);
+        let dateCell = document.createElement("th");
+        dateCell.innerHTML="Date";
+        gameTable.append(dateCell);
 
-          //Load the highscores for this game
-          let scores = highscores["games"][game]["highscores"];
+        let playerCell = document.createElement("th");
+        playerCell.innerHTML="Player";
+        gameTable.append(playerCell);
 
-          //Create a table row for each highscore data element and populate it
-          let i = 0;
-          scores.forEach((score) => {
-            let tableRow = document.createElement("tr");
+        let stepsCell = document.createElement("th");
+        stepsCell.innerHTML="Steps";
+        gameTable.append(stepsCell);
 
-            let positionData = document.createElement("td");
-            positionData.innerHTML= i+1;
-            tableRow.append(positionData);
+        //Load the highscores for this game
+        let scores = highscores["games"][game]["highscores"];
 
-            let dateData = document.createElement("td");
-            let date = new Date(score[0]);
-            let formattedDate = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
-            dateData.innerHTML=formattedDate;
-            tableRow.append(dateData);
+        //Create a table row for each highscore data element and populate it
+        let i = 0;
+        scores.forEach((score) => {
+          let tableRow = document.createElement("tr");
 
-            let playerData = document.createElement("td");
-            playerData.innerHTML=score[1];
-            tableRow.append(playerData);
+          let positionData = document.createElement("td");
+          positionData.innerHTML= i+1;
+          tableRow.append(positionData);
 
-            let stepsData = document.createElement("td");
-            stepsData.innerHTML=score[2];
-            tableRow.append(stepsData);
+          let dateData = document.createElement("td");
+          let date = new Date(score[0]);
+          let formattedDate = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+          dateData.innerHTML=formattedDate;
+          tableRow.append(dateData);
 
-            gameTable.append(tableRow);
-            ++i;
-          });
-          highscoresContainer.append(gameTable);
+          let playerData = document.createElement("td");
+          playerData.innerHTML=score[1];
+          tableRow.append(playerData);
 
-          //Inject the highscores into the view
-          let highscoreView = document.querySelector("#finish-selection-easy");
-          //Reset the view prior to injecting new data
-          highscoreView.innerHTML = "";
-          highscoreView.append(highscoresContainer);
+          let stepsData = document.createElement("td");
+          stepsData.innerHTML=score[2];
+          tableRow.append(stepsData);
+
+          gameTable.append(tableRow);
+          ++i;
+        });
+        highscoresContainer.append(gameTable);
+
+        //Inject the highscores into the view
+        let highscoreView = document.querySelector("#finish-selection-easy");
+        //Reset the view prior to injecting new data
+        highscoreView.innerHTML = "";
+        highscoreView.append(highscoresContainer);
         });
       });
     });
   };
 
   //Saves the game's end score to the highscores.json file
-  const saveHighscore = function() {
+  function saveHighscore() {
     let startID = 287816;
     let endID = 2166425;
     //Create the highscore for the current game
@@ -140,7 +134,6 @@ angular.module('wikimania',[]).controller('wikimania-hs-controller', function ($
     //Save the highscore file
     fs.writeFileSync(highscoreFilePath, JSON.stringify(highscores));
   }
-  saveHighscore();
 
   //Sorts array of arrays smallest to largest dependent on the amount of steps
   //a player used, which are stored in the third position of the score-array
@@ -152,18 +145,5 @@ angular.module('wikimania',[]).controller('wikimania-hs-controller', function ($
       return 1;
     }
     return 0;
-  }
-
-  //Sets the user in the user.json file
-  function setPlayer(name){
-    let player = getPlayer();
-    console.log(player);
-    player["user"] = name;
-    fs.writeFileSync(userFilePath, JSON.stringify(player));
-  }
-
-  //Returns the player object in JSON notation
-  function getPlayer() {
-    return JSON.parse(fs.readFileSync(userFilePath, 'utf8'));
   }
 });

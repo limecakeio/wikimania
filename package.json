@@ -2,7 +2,7 @@
   "name": "wikimania",
   "version": "0.0.1",
   "description": "A crazy race through Wikipedia",
-  "main": "index.html",
+  "main": "highscores.html",
   "scripts": {
   },
   "repository": {

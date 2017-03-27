@@ -1,9 +1,9 @@
 angular.module('wikimania',[]).controller('wikimania-controller', function ($scope, $timeout, $window, $http, wikipediaAPI) {
 
-  const fs = require('fs');
+  //const fs = require('fs');
 
-  $scope.fs = fs;
-  
+  //$scope.fs = fs;
+
   $scope.activeArticle = {
     html: '',
     title: '',

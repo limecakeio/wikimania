@@ -5,11 +5,16 @@
    <title>Highscore IDE for AngularJS</title>
   </head>
   <body ng-app="wikimania">
-	<div ng-controller='wikimania-hs-controller'>
-      <div data-ng-init="getAllHighscores()" id="finish-selection-easy"></div>
+	<div>
+      <!-- <div data-ng-init="getAllHighscores()" id="finish-selection-easy"></div> -->
 	</div>
-	    <script src="node_modules\angular/angular.min.js"></script>
-      <!-- <script src="src\js\index.js"></script> -->
-      <script src="src\js\highscores.js"></script>
+  <div id="start-list" ng-controller='wikimania-player-controller'></div>
+  <div id="target-list"></div>
+	    <script src="node_modules\angular\angular.min.js"></script>
+      <sript src="src\js\player.js"></script>
+      <script src="src\js\index.js"></script>
+      <script src="src\js\network.js"></script>
+      <sript src="src\js\game.js"></script>
+      <!-- <script src="src\js\highscores.js"></script> -->
   </body>
 </html>
