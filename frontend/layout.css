@@ -154,67 +154,15 @@ a {
     border-color: transparent transparent #ffffff transparent;
     display: none;
 }
-.beginner-triangle {
-    border-color: transparent yellow transparent transparent;
-    margin-left: 68%;
-    margin-top: -18%;
-    display: block;
-}
-.expert-triangle {
-    border-color: transparent transparent transparent yellow;
-    margin-left: 29%;
-    margin-top: -11%;
-    display: block;
-}
 .challenge-triangle {
     border-color: transparent transparent yellow transparent;
     margin-left: 49%;
     margin-top: -1%;
     display: block;
 }
-#button-container {
-    margin-top: 20px;
-}
-#difficulty-selection {
-    margin-top: 10%;
-}
-#difficulty-selection .button {
-    width: 300px;
-    margin: 10px 0px;
-}
-#difficulty-selection-mode {
-    min-height: 500px;
-    margin-top: 40px;
-}
-#difficulty-selection-mode #beginner-mode-info {
-    margin-left: 71%;
-    margin-top: -23%;
-    display: none;
-}
-#difficulty-selection-mode #beginner-mode-info.active {
-    display: block;
-}
-#difficulty-selection-mode #expert-mode-info {
-    margin-left: -21%;
-    margin-top: -18%;
-    display: none;
-}
-#difficulty-selection-mode #expert-mode-info.active {
-    display: block;
-}
-#difficulty-selection-mode #challenge-mode-info {
-    margin-left: 25%;
-    margin-top: 0%;
-    display: none;
-}
-#difficulty-selection-mode #challenge-mode-info.active {
-    display: block;
-}
-#mode-information li {
-    font-size: 20px;
-}
 
-/ GOOGLE MATERIAL ICONS / .material-icons {
+/* GOOGLE MATERIAL ICONS */
+.material-icons {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -346,11 +294,10 @@ a {
     box-shadow: 0 5px #666;
     transform: translateY(1px);
 }
-##button-container {
+#button-container {
     margin-top: 20px;
 }
 #difficulty-selection {
-    margin-top: 10%;
 }
 #difficulty-selection .button {
     width: 300px;
@@ -361,16 +308,16 @@ a {
     margin-top: 40px;
 }
 #difficulty-selection-mode #beginner-mode-info {
-    margin-left: 71%;
-    margin-top: -23%;
+    margin-left: 25%;
+    margin-top: 0%;
     display: none;
 }
 #difficulty-selection-mode #beginner-mode-info.active {
     display: block;
 }
 #difficulty-selection-mode #expert-mode-info {
-    margin-left: -21%;
-    margin-top: -18%;
+    margin-left: 25%;
+    margin-top: 0%;
     display: none;
 }
 #difficulty-selection-mode #expert-mode-info.active {
@@ -389,8 +336,14 @@ a {
 }
 
 #naming-screen {
+
+}
+
+#naming-screen-form {
     margin-top: 220px;
 }
+
+
 #confirm-name {
     margin-top: 20px;
 }
