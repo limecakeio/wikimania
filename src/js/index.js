@@ -17,6 +17,8 @@ wikimania.factory('game', wikipediaAPI => {
     id: ''
   };
 
+  let highscoreCallback = null;
+  
   game.startArticle = null;
 
   game.articleCounter = 0;

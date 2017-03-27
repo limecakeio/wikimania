@@ -67,4 +67,7 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       if(typeof currentKey === 'undefined') throw new Error("No article id for for key: " + key);
       return currentKey;
     };
+
+    $scope.model = game;
+   game.setNode('wikipedia-article');
 });

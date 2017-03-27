@@ -179,10 +179,10 @@
             <section id="wikipedia-content">
                 <div class="g12 box" id="wikipedia-content-info">
                     <div class="g4">
-                        <p>Ziel:</p>
+                        <p ng-controller="wikimania-game-gui-controller">Ziel: {{model.endArticle.title}}</p>
                     </div>
                     <div class="g4">
-                        <p id="current-clicks">Clicks:</p>
+                        <p id="current-clicks" ng-controller="wikimania-game-gui-controller">Clicks: {{model.articleCounter}}</p>
                     </div>
                     <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
                 </div>
