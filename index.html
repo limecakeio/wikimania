@@ -112,8 +112,8 @@
                     </div>
                 </div>
             </section>
-            <section id="preparation-screen-hard-mode">
-                <div class="container">
+            <section id="preparation-screen-hard-mode" ng-controller="wikimania-game-gui-controller">
+                <div class="container" data-ng-init="prepareHardGame()">
                     <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
                     <div class="g12">
                         <h3>Hard Mode</h3><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>Wähle einen neuen Start und Zielpunkt</a>
@@ -121,8 +121,7 @@
                             <div class="g1"></div>
                             <div class="g10" id="start-selection-hard">
                                 <button class="accordion">Start:</button>
-                                <div class="panel">
-                                    <p>Startpunkt</p>
+                                <div class="panel" id="hard-start">
                                 </div>
                             </div>
                             <div class="g1"></div>
@@ -131,7 +130,7 @@
                             <div class="g1"></div>
                             <div class="g10" id="finish-selection-hard">
                                 <button class="accordion">Ziel:</button>
-                                <div class="panel">
+                                <div class="panel" id="hard-finish">
                                     <p>Zielpunkt</p>
                                 </div>
                             </div>
@@ -177,13 +176,13 @@
                     </div>
                 </div>
             </section>
-            <section id="wikipedia-content" ng-controller="wikimania-game-gui-controller">
+            <section id="wikipedia-content">
                 <div class="g12 box" id="wikipedia-content-info">
                     <div class="g4">
-                        <p>Ziel: {{game.endArticle.title}}</p>
+                        <p>Ziel:</p>
                     </div>
                     <div class="g4">
-                        <p id="current-clicks">Clicks: {{game.articleCounter}}</p>
+                        <p id="current-clicks">Clicks:</p>
                     </div>
                     <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
                 </div>

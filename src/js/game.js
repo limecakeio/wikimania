@@ -6,7 +6,7 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
     const gamesFilePath = "src/assets/games.json";
     const fs = require('fs');
 
-    //Initiate a new game
+    //Initiate a new simple game
     $scope.initiateSimpleGame = function() {
       //Retrieve the clicked list elements
       let startPoint = document.querySelector("#easy-starts .clicked");
@@ -22,6 +22,19 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
         //Load the new section
         openSection("wikipedia-content");
       }
+    }
+
+    //Generate new hard random game articles
+    $scope.prepareHardGame = function() {
+      //Arrange start article
+      wikipediaAPI.getRandomArticleTitle((title, error) => {
+        let startTitle = document.createElement("p");
+        startTitle.innerHTML = title;
+        wikipediaAPI.titleToID(title, (id, error) => {
+          startTitle.setAttribute('data-id', id);
+          document.querySelector("#hard-start").append(startTitle);
+        });
+      })
     }
 
     //Injects the game list into a specified container.
@@ -54,8 +67,4 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       if(typeof currentKey === 'undefined') throw new Error("No article id for for key: " + key);
       return currentKey;
     };
-
-    $scope.game = game;
-
-    $scope.game.setNode('wikipedia-article');
 });
