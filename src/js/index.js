@@ -1,10 +1,16 @@
 angular.module('wikimania',[]).controller('wikimania-controller', function ($scope, $timeout, $window, $http, wikipediaAPI) {
 
+  const fs = require('fs');
+
+  $scope.fs = fs;
+  
   $scope.activeArticle = {
     html: '',
     title: '',
     id: ''
   };
+
+  $scope.startArticle = null;
 
   $scope.articleCounter = 0;
 
@@ -28,6 +34,7 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (error !== null) {
         console.error(error);
       } else {
+        $scope.startArticle = article;
         $scope.activeArticle = article;
         document.querySelector('#contextNode').innerHTML = article.html;
       }
@@ -52,6 +59,7 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (error !== null) {
         console.error(error);
       } else {
+        $scope.startArticle = article;
         $scope.activeArticle = article;
         document.querySelector('#contextNode').innerHTML = article.html;
       }
