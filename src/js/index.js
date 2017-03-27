@@ -19,14 +19,16 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
     id: -1
   };
 
-  let difficultiyLevel = 0;
+  let difficultiy = 0;
+
+  let game = {};
+
 
   /*
    * sets the activeArticle object with the argument startID
    * endArticle is saved internally
    */
   $scope.startGame = function(startID, endID) {
-
     wikipediaAPI.getArticle(startID, (article, error) => {
       if (error !== null) {
         console.error(error);
@@ -49,7 +51,7 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
   const checkArticle = function() {
     if ($scope.articleArchive[$scope.articleArchive.length - 1].id === endArticle.id) {
       $scope.goalReached = true;
-      console.log('fin');
+      console.log('fin ');
     }
   };
 
@@ -66,7 +68,7 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
     });
   };
 
-  $scope.getRandomArticle = function() {
+  $scope.getRandomArticle = () => {
     wikipediaAPI.getRandomArticle((article, error) => {
       if (error !== null) {
         console.error(error);
@@ -78,9 +80,6 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
   };
 
   $scope.getPreview = (selector) => {
-    if (endArticle.id === -1) {
-      throw new Error('no goal!');
-    }
     wikipediaAPI.getPreview(endArticle.id, (preview, error) => {
       if (error !== null) {
         console.error(error);
@@ -96,6 +95,8 @@ angular.module('wikimania',[]).controller('wikimania-controller', function ($sco
       if (href.indexOf('action=') == -1 && href.indexOf('(Seite nicht vorhanden)') == -1){
         let titleArray = event.target.href.split('/');
         loadNewArticle(titleArray[titleArray.length - 1]);
+      } else {
+         event.target.tagName === 'span';
       }
       event.preventDefault();
     }
