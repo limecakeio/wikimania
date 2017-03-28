@@ -2,8 +2,7 @@ wikimania.factory('wikipediaAPI', $http => {
   let self = this;
   const wikipediaAPI = {};
 
-  wikipediaAPI.getArticle = (identifier, callback) => {
-    if (typeof identifier === 'number') {
+  wikipediaAPI.getArticle = (identifier, callback) => {    if (typeof identifier === 'number') {
       getArticleFromID(identifier, true).then(response => {
           try  {
             let article = parseArticle(response);
@@ -30,14 +29,15 @@ wikimania.factory('wikipediaAPI', $http => {
     return $http({
 	      method: 'GET',
         url: 'https://de.wikipedia.org/w/api.php?origin=*&action=parse&prop=text|images&format=json&&page=' + title + (redirect ? '&redirects=true': '')
+    //      url: 'https://de.wikipedia.org/w/api.php?origin=*&action=parse&prop=text|images&format=json&&page=' + title
     }).then(response => {
       if (typeof response.data.error !== 'undefined') {
+        return;
         return getArticleFromTitle(title, false);
       } else {
         return response.data;
       }
     }, error => {
-      console.log('get request failed ' + error);
       return error;
     });
   };
@@ -183,12 +183,12 @@ wikimania.factory('wikipediaAPI', $http => {
   };
 
   wikipediaAPI.getRandomArticle = callback => {
-    getRandomArticleTitle().then(title => {
+    getRandomArticleTitleInternal().then(title => {
       wikipediaAPI.getArticle(title, callback);
     });
   };
 
-  const getRandomArticleTitle = () => {
+  const getRandomArticleTitleInternal = () => {
     return $http({
         method: 'GET',
         url: 'https://de.wikipedia.org/w/api.php?origin=*&action=query&list=random&rnnamespace=0&format=json'
