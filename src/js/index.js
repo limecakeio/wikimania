@@ -56,6 +56,8 @@ wikimania.factory('game', (wikipediaAPI, $window) => {
         game.startArticle = article;
         game.activeArticle = article;
         contextNode.innerHTML = article.html;
+        game.articleArchive = [];
+        game.articleArchive.push(article);
       }
     });
     wikipediaAPI.getRandomArticle((article, error) => {
@@ -79,6 +81,7 @@ wikimania.factory('game', (wikipediaAPI, $window) => {
         console.error(error);
       } else {
         game.startArticle = article;
+        game.articleArchive = [];
         game.articleArchive.push(article);
         game.activeArticle = article;
         contextNode.innerHTML = article.html;
@@ -180,7 +183,7 @@ wikimania.factory('game', (wikipediaAPI, $window) => {
     game.goalReached = false;
     game.articleCounter = 0;
     game.articleArchive = [];
-    contextNode.innerHTML = '';
+//    contextNode.innerHTML = '';
   };
   return game;
 });
