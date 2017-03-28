@@ -4,6 +4,12 @@ wikimania.factory('game', wikipediaAPI => {
 
   let contextNode = null;
 
+  let highscoreController = null;
+
+  game.setHighscoreController = (controller) => {
+      highscoreController = controller;
+  };
+
   game.setNode = (identifier) => {
     contextNode = document.querySelector('#' + identifier);
     if (contextNode === null) {
@@ -94,8 +100,10 @@ wikimania.factory('game', wikipediaAPI => {
     if (game.articleArchive[game.articleArchive.length - 1].id === game.endArticle.id) {
       game.goalReached = true;
       highscoreCallback(game.startArticle.id, game.endArticle.id);
+      highscoreController.getAllHighscores();
       game.addArticleArchive('success-stations');
-      window.scrollTop;
+      console.log(window.scrollTop);
+      window.scrollTop = 0;
       openSection("success-screen");
       //game.reset();
     } else {
