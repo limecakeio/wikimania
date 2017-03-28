@@ -121,6 +121,13 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       return currentKey;
     };
 
+    $scope.reset = (section) => {
+      game.articleCounter = 0;
+      if (typeof section !== 'undefined') {
+        openSection(section)
+      }
+    };
+
     $scope.model = game;
    game.setNode('wikipedia-article');
 });
