@@ -117,7 +117,7 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI, 
     }
 
     //Set the steps taken from start to finish
-    newHighscore[2] = 5; //TODO has to reflect the actual steps!
+    newHighscore[2] = game.articleCounter;
 
     //Grab the highscore file to add the new score to it
     let highscores = JSON.parse(fs.readFileSync(highscoreFilePath, 'utf8'));
