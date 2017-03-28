@@ -2,6 +2,8 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI, 
   const highscoreFilePath = "src/assets/highscores.json";
   const fs = require('fs');
 
+  game.setHighscoreController($scope);
+
   $scope.getAllHighscores = function() {
     //Load the current highscores
     let highscores = JSON.parse(fs.readFileSync(highscoreFilePath, 'utf8'));
