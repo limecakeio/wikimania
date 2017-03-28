@@ -12,7 +12,7 @@ var highlightElement = function(element) {
 	neighborPart.map(function (neighborElement) {
 		neighborElement.classList.remove('line-through');
 		if(neighborElement.getAttribute('onclick') === null) {
-			neightborElement.setAttribute('onclick', 'highlightElement(this)');
+			neighborElement.setAttribute('onclick', 'highlightElement(this)');
 		}
 		if(neighborElement.getAttribute('data-id') === element.getAttribute('data-id')) {
 			neighborElement.className += ' line-through';
