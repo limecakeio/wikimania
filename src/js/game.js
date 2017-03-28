@@ -1,3 +1,12 @@
+let wikimaniaGame = null;
+
+const initiateChallenge = (startID, endID) => {
+  if(typeof startID !== 'undefined' && typeof endID !== 'undefined') {
+    wikimaniaGame.startGame(parseInt(startID), parseInt(endID));
+    openSection('wikipedia-content');
+  }
+}
+
 /**
 Handles all pre-defined games logic, which are the start/target sites availble
 within the easy-mode of the game.
@@ -5,6 +14,10 @@ within the easy-mode of the game.
 wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipediaAPI, game) {
     const gamesFilePath = "src/assets/games.json";
     const fs = require('fs');
+
+    if(wikimaniaGame === null) {
+      wikimaniaGame = game;
+    }
 
     //Initiate a new simple game
     $scope.initiateSimpleGame = function() {

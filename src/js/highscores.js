@@ -32,7 +32,7 @@ wikimania.controller('wikimania-hs-controller', function ($scope, wikipediaAPI, 
         let challengeButton = document.createElement("div");
         challengeButton.classList.add("button", "button-darkblue");
         challengeButton.innerHTML="Take this challenge";
-        challengeButton.setAttribute('ng-click', 'startGame(' + gameList[0] + ',' + gameList[1] + ')');
+        challengeButton.setAttribute('onclick', 'initiateChallenge(' + gameList[0] + ',' + gameList[1] + ')');
         highscoresContainer.append(challengeButton);
 
         //Display the hall-of-fame in a table
