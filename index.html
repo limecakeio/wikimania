@@ -183,7 +183,7 @@
                     <div class="g4">
                         <p id="current-clicks" ng-controller="wikimania-game-gui-controller">Clicks: {{model.articleCounter}}</p>
                     </div>
-                    <div class="g4"><a onclick="openSection('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
+                    <div class="g4"><a ng-controller="wikimania-game-gui-controller" ng-click="reset('title-screen')"><i class="material-icons">&#xE5C9;</i>Cancel</a></div>
                 </div>
                 <div class="container">
                     <div id="wikipedia-article">
@@ -211,10 +211,10 @@
 				<div class="container">
 					<div class="g2"></div>
 					<div class="g4">
-						<div class="align-center button button-green" id="back-to-title" onclick="openSection('title-screen')">Zum Startbildschirm</div>
+						<div class="align-center button button-green" id="back-to-title" ng-controller="wikimania-game-gui-controller" ng-click="reset('title-screen')">Zum Startbildshirm</div>
 					</div>
 					<div class="g4">
-						<div class="align-center button button-darkblue" id="toHighscore" onclick="openSection('highscore')">Zum Highscore</div>
+						<div class="align-center button button-darkblue" id="toHighscore" ng-controller="wikimania-game-gui-controller" ng-click="reset('highscore')">Zum Highscore</div>
 					</div>
 					<div class="g2"></div>
 				</div>

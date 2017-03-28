@@ -29,8 +29,6 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       //Retrieve the clicked list elements
       let startPoint = document.querySelector("#easy-starts .clicked");
       let targetPoint = document.querySelector("#easy-ends .clicked");
-      console.log(startPoint);
-      console.log(targetPoint);
 
       //Ensure user has selected both a start and target article
       if(startPoint !== null && targetPoint !== null) {
@@ -119,6 +117,13 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       let currentKey = presavedGames["games"][key];
       if(typeof currentKey === 'undefined') throw new Error("No article id for for key: " + key);
       return currentKey;
+    };
+
+    $scope.reset = (section) => {
+      game.articleCounter = 0;
+      if (typeof section !== 'undefined') {
+        openSection(section)
+      }
     };
 
     $scope.model = game;
