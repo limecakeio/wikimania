@@ -10,7 +10,7 @@
     "url": "git+https://github.com/limecakeio/wikimania.git"
   },
   "window": {
-        "icon" : "favicon.ico",
+        "icon" : "favicon.png",
         "toolbar": false,
         "width": 1024,
         "height": 768,

@@ -19,6 +19,7 @@ wikimania.controller('wikimania-player-controller', function ($scope, wikipediaA
       let player = getPlayer();
       player["user"] = playerName;
       fs.writeFileSync(userFilePath, JSON.stringify(player));
+      openSection('difficulty-selection');
     }
   };
 
