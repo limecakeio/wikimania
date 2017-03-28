@@ -1,5 +1,5 @@
 const wikimania = angular.module('wikimania',[]);
-wikimania.factory('game', wikipediaAPI => {
+wikimania.factory('game', (wikipediaAPI, $window) => {
   const game = {};
 
   let contextNode = null;
@@ -82,7 +82,7 @@ wikimania.factory('game', wikipediaAPI => {
         game.articleArchive.push(article);
         game.activeArticle = article;
         contextNode.innerHTML = article.html;
-        window.scrollTop;
+        window.scrollTo(0, 0);
       }
     });
     wikipediaAPI.getArticle(endID, (article, error) => {
@@ -102,8 +102,6 @@ wikimania.factory('game', wikipediaAPI => {
       highscoreCallback(game.startArticle.id, game.endArticle.id);
       highscoreController.getAllHighscores();
       game.addArticleArchive('success-stations');
-      console.log(window.scrollTop);
-      window.scrollTop = 0;
       openSection("success-screen");
       //game.reset();
     } else {

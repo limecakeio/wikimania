@@ -116,7 +116,7 @@
                 <div class="container" data-ng-init="prepareHardGame()">
                     <div class="g12 align-left return-button"><a onclick="openSection('difficulty-selection')"><i class="material-icons">&#xE5C4;</i>Zurück</a></div>
                     <div class="g12">
-                        <h3>Hard Mode</h3><a onclick="openSection('preparation-screen-hard-mode')"><i class="material-icons">&#xE5D5;</i>Wähle einen neuen Start und Zielpunkt</a>
+                        <h3>Hard Mode</h3><a ng-click="prepareHardGame()"><i class="material-icons">&#xE5D5;</i>Wähle einen neuen Start und Zielpunkt</a>
                         <div class="g12">
                             <div class="g1"></div>
                             <div class="g10" id="start-selection-hard">
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                     <div class="g12 start-game-button">
-                        <div class="button button-green" onclick="openSection('wikipedia-content')">Spiel starten</div>
+                        <div class="button button-green" ng-click="initiateHardGame()">Spiel starten</div>
                     </div>
                 </div>
             </section>

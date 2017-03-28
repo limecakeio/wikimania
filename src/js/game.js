@@ -19,6 +19,11 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       wikimaniaGame = game;
     }
 
+    const hardMode = {
+      from: 0,
+      to: 0
+    };
+
     //Initiate a new simple game
     $scope.initiateSimpleGame = function() {
       //Retrieve the clicked list elements
@@ -40,25 +45,49 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
     }
 
     //Generate new hard random game articles
-    $scope.prepareHardGame = function() {
-      //Arrange start article
+    $scope.prepareHardGame = function() {      //Arrange start article
       wikipediaAPI.getRandomArticleTitle((title, error) => {
         let startTitle = document.createElement("p");
         startTitle.innerHTML = title;
         wikipediaAPI.titleToID(title, (id, error) => {
+          hardMode.from = id;
           startTitle.setAttribute('data-id', id);
-          document.querySelector("#hard-start").append(startTitle);
+          let hardStart = document.querySelector("#hard-start");
+          hardStart.innerHTML = '';
+          hardStart.append(startTitle);
         });
         //Arrange target article
         wikipediaAPI.getRandomArticleTitle((title, error) => {
           let targetTitle = document.createElement("p");
           targetTitle.innerHTML = title;
           wikipediaAPI.titleToID(title, (id, error) => {
+            hardMode.to = id;
             targetTitle.setAttribute('data-id', id);
-            document.querySelector("#hard-finish").append(targetTitle);
+            let hardFinish = document.querySelector("#hard-finish");
+            hardFinish.innerHTML = '';
+            hardFinish.append(targetTitle);
           });
         });
     });
+  };
+
+  $scope.initiateHardGame = () => {
+    //Retrieve the clicked list elements
+    let startPoint = document.querySelector("#hard-start");
+    let targetPoint = document.querySelector("#hard-finish");
+    console.log(startPoint);
+    console.log(targetPoint);
+
+    //Ensure user has selected both a start and target article
+    if(startPoint !== null && targetPoint !== null) {
+      //Retrieve the article IDs
+      let startID = hardMode.from;
+      let targetID = hardMode.to;
+      //Get controller to start a new game
+      game.startGame(parseInt(startID), parseInt(targetID));
+      //Load the new section
+      openSection("wikipedia-content");
+    }
   };
 
     //Injects the game list into a specified container.
