@@ -475,11 +475,6 @@ a {
 
 /* Wikipedia Section */
 
-#wikipedia-article a {
-    cursor: pointer;
-    background-color: #F26101;
-}
-
 #wikipedia-content .box {
     margin: 0;
     height: 60px;
@@ -501,6 +496,12 @@ a {
     z-index: 0;
     text-align: left;
     font-family: 'PT Serif', serif;
+}
+
+#wikipedia-article a {
+    cursor: pointer;
+    background-color: #ADFF2F;
+	font-weight: bold;
 }
 
 #wikipedia-article p {
@@ -542,6 +543,24 @@ a {
     line-height: 19px;
     font-size: 19px;
     font-weight: bold;
+}
+
+/* Success Screen */
+#success-screen .button {
+	margin-top: 60px;
+	width: 200px;
+	min-height: 30px;
+	padding-top: 20px;
+}
+
+#success-screen h4 {
+	font-weight: bold;
+}
+
+#success-screen p {
+	font-size: 25px;
+	line-height: 25px;
+	font-style: italic;
 }
 
 /* TRANSITIONS*/

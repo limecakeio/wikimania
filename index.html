@@ -194,7 +194,7 @@
                 <h3>Sie haben es geschafft!</h3>
                 <h4 ng-controller="wikimania-game-gui-controller">Von {{model.startArticle.title}} nach {{model.endArticle.title}} in</h4>
                 <div class="container">
-                    <div class="g5 align-right">
+                    <div class="g7 align-right">
                         <p ng-controller="wikimania-game-gui-controller">{{model.articleCounter}} Schritten</p>
                     </div>
                     <div class="g2"></div>
@@ -208,6 +208,16 @@
                         <p>Pasta</p>
                     </div>
                 </div>
+				<div class="container">
+					<div class="g2"></div>
+					<div class="g4">
+						<div class="align-center button button-green" id="back-to-title" onclick="openSection('title-screen')">Zum Startbildshirm</div>
+					</div>
+					<div class="g4">
+						<div class="align-center button button-darkblue" id="toHighscore" onclick="openSection('highscore')">Zum Highscore</div>
+					</div>
+					<div class="g2"></div>
+				</div>
             </section>
         </article>
     </main>
