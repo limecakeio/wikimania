@@ -39,6 +39,7 @@ var openSection = (function(section) {
         row.className = '';
     });
     document.querySelector('#' + name).className = 'active';
+    window.scrollTo(0, 0);
 });
 
 openSection('title-screen');
