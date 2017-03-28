@@ -73,6 +73,7 @@ wikimania.factory('game', wikipediaAPI => {
         console.error(error);
       } else {
         game.startArticle = article;
+        game.articleArchive.push(article);
         game.activeArticle = article;
         contextNode.innerHTML = article.html;
         window.scrollTop;
@@ -90,25 +91,21 @@ wikimania.factory('game', wikipediaAPI => {
   };
 
   const checkArticle = function() {
-    console.log('aa');
     if (game.articleArchive[game.articleArchive.length - 1].id === game.endArticle.id) {
       game.goalReached = true;
-//      console.log('fin');
       highscoreCallback(game.startArticle.id, game.endArticle.id);
-  //    game.addArticleArchive('articles');
-      openSection("success-screen");
       game.addArticleArchive('success-stations');
       window.scrollTop;
-      game.reset();
-      openSection('highscore');
+      openSection("success-screen");
+      //game.reset();
     } else {
 //      console.log(game.articleArchive[game.articleArchive.length - 1].id);
   //    console.log(game.endArticle.id);
     }
   };
 
-  game.addArticleArchive = selector => {
-    let node = document.querySelector('#' + selector);
+  game.addArticleArchive = () => {
+    let node = document.querySelector('#success-stations');
     node.innerHTML = '';
     game.articleArchive.forEach(article => {
       let element = document.createElement('p');
