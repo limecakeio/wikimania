@@ -1,7 +1,7 @@
 {
   "name": "wikimania",
-  "version": "0.0.1",
-  "description": "A crazy race through Wikipedia",
+  "version": "1.0.0",
+  "description": "Wikimania - not only fun, but also eduactional. The least clicks win!",
   "main": "index.html",
   "scripts": {
   },
@@ -19,8 +19,9 @@
     },
   "keywords": [
     "wikipedia",
-    "race",
-    "game"
+    "clicks",
+    "game",
+"educational"
   ],
   "author": "PixelPedia",
   "license": "MIT",
