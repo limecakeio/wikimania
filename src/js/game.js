@@ -11,10 +11,14 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       //Retrieve the clicked list elements
       let startPoint = document.querySelector("#easy-starts .clicked");
       let targetPoint = document.querySelector("#easy-ends .clicked");
-      let startID = startPoint.getAttribute("data-id");
-      let targetID = targetPoint.getAttribute("data-id");
+      console.log(startPoint);
+      console.log(targetPoint);
 
-      if(typeof startID !== 'undefined' && typeof targetID !== 'undefined') {
+      //Ensure user has selected both a start and target article
+      if(startPoint !== null && targetPoint !== null) {
+        //Retrieve the article IDs
+        let startID = startPoint.getAttribute("data-id");
+        let targetID = targetPoint.getAttribute("data-id");
         //Get controller to start a new game
         game.startGame(parseInt(startID), parseInt(targetID));
         //Load the new section

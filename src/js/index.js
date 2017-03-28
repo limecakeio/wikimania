@@ -94,7 +94,7 @@ wikimania.factory('game', wikipediaAPI => {
     if (game.articleArchive[game.articleArchive.length - 1].id === game.endArticle.id) {
       game.goalReached = true;
 //      console.log('fin');
-      highscoreCallback(game.activeArticle.id, game.endArticle.id);
+      highscoreCallback(game.startArticle.id, game.endArticle.id);
   //    game.addArticleArchive('articles');
       openSection("success-screen");
       game.addArticleArchive('success-stations');
