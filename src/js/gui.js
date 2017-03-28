@@ -2,7 +2,6 @@
 var highlightElement = function(element) {
     var allElements = [].slice.call(document.querySelectorAll('#' + element.parentNode.id +' p'));
 	var neighborPart;
-	console.log(element);
 	if(element.parentNode.id === 'easy-starts') {
 		neighborPart = [].slice.call(document.querySelectorAll('#easy-ends p'));
 	}
