@@ -41,7 +41,7 @@ var openSection = (function(section) {
     document.querySelector('#' + name).className = 'active';
 });
 
-openSection('title-screen');
+openSection('success-screen');
 
 
 /* Difficulty Selection Description Popup */
