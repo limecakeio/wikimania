@@ -1,9 +1,29 @@
 /* List Element Highlighting */
 var highlightElement = function(element) {
     var allElements = [].slice.call(document.querySelectorAll('#' + element.parentNode.id +' p'));
+	var neighborPart;
+	console.log(element);
+	if(element.parentNode.id === 'easy-starts') {
+		neighborPart = [].slice.call(document.querySelectorAll('#easy-ends p'));
+	}
+	else {
+		neighborPart = [].slice.call(document.querySelectorAll('#easy-starts p'));
+	}
+	// Line-though Value that in the Start/Finish table if they have been chosen in the other one
+	neighborPart.map(function (neighborElement) {
+		neighborElement.classList.remove('line-through');
+		if(neighborElement.getAttribute('onclick') === null) {
+			neightborElement.setAttribute('onclick', 'highlightElement(this)');
+		}
+		if(neighborElement.getAttribute('data-id') === element.getAttribute('data-id')) {
+			neighborElement.className += ' line-through';
+			neighborElement.removeAttribute('onclick');
+		}
+	});
     allElements.map(function(element) {
         element.classList.remove('clicked');
     });
+	// Highlight element
      element.className += ' clicked';
  };
 
@@ -82,6 +102,7 @@ var rulesButton = document.querySelector('#title-screen-button #game-rules');
 
 closePopUp.onclick = function() {
 	popup.classList.remove('active');
+	popup.classList.remove('active');
 };
 
 rulesButton.onclick = function() {
@@ -102,7 +123,6 @@ var ruleSlide = function(direction) {
 	rules.map(function(rule) {
 		rule.style.display = 'none';
 	});
-	console.log(currentRuleIndex);
 	if(currentRuleIndex === 0) {
 		sliderButtonLeft.classList.remove('active');
 		sliderButtonRight.className += ' active';

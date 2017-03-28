@@ -333,10 +333,6 @@ a {
     font-size: 20px;
 }
 
-#naming-screen {
-
-}
-
 #naming-screen-form {
     margin-top: 220px;
 }
@@ -403,7 +399,7 @@ a {
     padding: 10px;
     cursor: pointer;
 }
-/* Preparation Screen */
+/* Preparation Screen  Easy*/
 
 #preparation-screen-easy-mode .panel p:hover {
     font-weight: bold;
@@ -428,6 +424,13 @@ a {
     font-size: 30px;
     margin-top: 200px;
 }
+#preparation-screen-easy-mode #easy-starts p.line-through, #preparation-screen-easy-mode #easy-ends p.line-through {
+	text-decoration: line-through;
+	color: #cccccc;
+	cursor: default;
+}
+
+/* Preparation Screen Hard Mode */
 
 #preparation-screen-hard-mode .panel {
     min-height: 120px;
@@ -470,7 +473,9 @@ a {
     margin-bottom: 40px;
 }
 
-#wikipedia-content a {
+/* Wikipedia Section */
+
+#wikipedia-article a {
     cursor: pointer;
     background-color: #F26101;
 }
@@ -583,7 +588,6 @@ button.accordion:hover {
     font-weight: 500;
 }
 .panel {
-    display: none;
     padding: 0px 18px;
     background-color: white;
     overflow: hidden;
