@@ -19,7 +19,6 @@ wikimania.controller('wikimania-player-controller', function ($scope, wikipediaA
       let player = getPlayer();
       player["user"] = playerName;
       fs.writeFileSync(userFilePath, JSON.stringify(player));
-      openSection('game-rules-popup');
     }
   };
 
@@ -32,6 +31,6 @@ wikimania.controller('wikimania-player-controller', function ($scope, wikipediaA
   function playerIsSet() {
     let player = getPlayer();
     let playerValue = player["user"];
-    return (typeof playerValue !== 'undefined');
+    return (playerValue !== null);
   };
 });

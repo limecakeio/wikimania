@@ -13,8 +13,6 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
       let targetPoint = document.querySelector("#easy-ends .clicked");
       let startID = startPoint.getAttribute("data-id");
       let targetID = targetPoint.getAttribute("data-id");
-      console.log(startID);
-      console.log(targetID);
 
       if(typeof startID !== 'undefined' && typeof targetID !== 'undefined') {
         //Get controller to start a new game
@@ -34,8 +32,17 @@ wikimania.controller('wikimania-game-gui-controller', function ($scope, wikipedi
           startTitle.setAttribute('data-id', id);
           document.querySelector("#hard-start").append(startTitle);
         });
-      })
-    }
+        //Arrange target article
+        wikipediaAPI.getRandomArticleTitle((title, error) => {
+          let targetTitle = document.createElement("p");
+          targetTitle.innerHTML = title;
+          wikipediaAPI.titleToID(title, (id, error) => {
+            targetTitle.setAttribute('data-id', id);
+            document.querySelector("#hard-finish").append(targetTitle);
+          });
+        });
+    });
+  };
 
     //Injects the game list into a specified container.
     //Excpects the id of the container as a string for instance "#container-id"
